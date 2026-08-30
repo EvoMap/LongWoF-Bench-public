@@ -100,7 +100,7 @@
       "mutable_latest_alias": false
     },
     "publication": {
-      "status": "pending_publication",
+      "status": "published",
       "github_release": {
         "repository": "EvoMap/LongWoF-Bench-public",
         "tag": "v1.0.2",

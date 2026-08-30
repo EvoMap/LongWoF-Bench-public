@@ -10,7 +10,7 @@
   "project": "LongWoF-Bench",
   "public_release_manifest_sha256": "b3d0658af1882172e258bfff399a9a85d9ccc5b3fa8c23c0eac6c52c3d98fd36",
   "publication": {
-    "anonymous_download": false,
+    "anonymous_download": true,
     "github_release": {
       "archive_url": "https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.2/taskgenome-bench-public-data-v1.0.2.tar.gz",
       "release_url": "https://github.com/EvoMap/LongWoF-Bench-public/releases/tag/v1.0.2",
@@ -19,7 +19,7 @@
       "sigstore_bundle_url": "https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.2/taskgenome-bench-public-data-v1.0.2.tar.gz.sigstore.json",
       "tag": "v1.0.2"
     },
-    "status": "pending_publication",
+    "status": "published",
     "version": "1.0.2"
   },
   "release_id": "ad87fa3c374e7098d712d7a6",

@@ -312,8 +312,8 @@
     {
       "mode": "0644",
       "path": "release/public_data_artifact.v1.json",
-      "sha256": "003ceb17e35432226850d95531e5205291cc112112750f3c96616130194c589c",
-      "size": 1574,
+      "sha256": "3e9792b62a00a60e07c72f01d12af5a0e039fded9aa6b3cf2e5159bcb098c68f",
+      "size": 1563,
       "source_relpath": "release/public_data_artifact.v1.json"
     },
     {
@@ -340,8 +340,8 @@
     {
       "mode": "0644",
       "path": "release/stage_c_release.v1.json",
-      "sha256": "99c93f13ab2c63a53bd99fa16e63b0f49962f8bf2c83a248fe4712588531c2b8",
-      "size": 13744,
+      "sha256": "ab312c4ecf8438b90a2fddd2f91881705575caeb58d50e1641da01271b8f7e4d",
+      "size": 13734,
       "source_relpath": "release/stage_c_release.v1.json"
     },
     {
