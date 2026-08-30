@@ -125,6 +125,58 @@ published condition.
   scoring for published-result comparison.
 - `hardened-v2` results must be labeled and analyzed separately.
 
+## 1.0.2 - 2026-08-30
+
+A data-rights release. The code is unchanged; the archive is re-cut because four
+bundled e-commerce category taxonomies in `T0498` had no redistribution grant.
+Versions 1.0.0 and 1.0.1 contain those files and must not be redistributed.
+
+### Removed
+
+- The Amazon, Meta, and Google product-category taxonomies bundled with `T0498`
+  (`amazon_product_categories.csv`, `amazon_product_categories_full.csv`,
+  `fb_product_categories.csv`, `google_shopping_product_categories.csv`, in both
+  the environment and runtime trees; 7,213,180 bytes across eight files). No
+  redistribution licence could be established for any of them: the Amazon list
+  derives from the Amazon Browse Node structure via a third-party site, Meta's
+  taxonomy is governed by its platform terms, and Google's is a freely published
+  standard carrying no explicit licence. They are excluded by the new
+  `exclude_thirdparty_ecommerce_taxonomies` rule in
+  `release/asset_policy.v1.json`, which mirrors the rule already used for the
+  restricted Anthropic Skill packages. The task's own data README is retained so
+  that a user who obtains the taxonomies from their rights holders knows where
+  they belong.
+
+### Added
+
+- `release/restricted_assets.v1.json`, recording the withheld taxonomies, their
+  origin, rights holder, and expected paths, as metadata only. It is not a
+  distribution manifest.
+- `release/third_party_sources.v1.json`, the upstream provenance record, is now
+  shipped in the code repository rather than only alongside the data.
+- Traced provenance for the three nested data sources that are cleared for
+  redistribution, with the citations they require, in
+  `THIRD_PARTY_NOTICES.md`: `T0454` PB2002 plate boundaries (CC BY 4.0, Bird
+  2003) and its USGS earthquake catalog (U.S. Government work), `T0485` NASA
+  budget material (U.S. Government work), and `T0493`'s instance from an
+  MIT-licensed exam-scheduling generator.
+- Carve-outs in `DATA_LICENSE.md` making explicit that the CC BY 4.0 grant
+  covers LongWoF-Bench-original material only.
+
+### Changed
+
+- The public data archive is `taskgenome-bench-public-data-v1.0.2.tar.gz`
+  (321,198,041 bytes, SHA-256 `e950c23bba0371fc70d0ef99a68877d1a0c58bbb9425cdd355a4092e920b4593`),
+  carrying 4,412 assets over
+  566,818,316 unpacked bytes with asset Merkle root
+  `846b1d97645892aef9ad2bb7ee885d413981f36390892e3f1ea9dcfdbdb6a8e5`.
+- The artifact record reports `pending_publication`, which is a value
+  `verify-package` accepts; the 1.0.1 record used a status string that the
+  checker rejected.
+- The release audit now passes with no errors. A stray untracked scratch file
+  under `tasks_final/genes_evolved/` had been leaving the inventory walk with an
+  `unscanned_asset_path` error, so 1.0.1 was cut from a failing audit.
+
 ## 1.0.1 - 2026-08-27 (release candidate)
 
 The reproducible v1.0.1 release. The archive, its checksum sidecar, and its

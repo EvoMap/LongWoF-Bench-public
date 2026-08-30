@@ -7,8 +7,8 @@
     "code_repository_url": "https://github.com/EvoMap/LongWoF-Bench-public"
   },
   "versions": {
-    "code": "1.0.1",
-    "public_data": "1.0.1",
+    "code": "1.0.2",
+    "public_data": "1.0.2",
     "private_assets": "1.0.1"
   },
   "licenses": {
@@ -87,11 +87,11 @@
     ]
   },
   "public_data": {
-    "artifact_basename": "taskgenome-bench-public-data-v1.0.1",
+    "artifact_basename": "taskgenome-bench-public-data-v1.0.2",
     "archive_format": "tar.gz",
-    "release_id": "aebd799c580e4985ca590409",
-    "expected_asset_count": 4420,
-    "expected_unpacked_asset_bytes": 574031496,
+    "release_id": "ad87fa3c374e7098d712d7a6",
+    "expected_asset_count": 4412,
+    "expected_unpacked_asset_bytes": 566818316,
     "integrity": "SHA-256",
     "authentication": "Sigstore keyless bundle",
     "archive": {
@@ -100,11 +100,11 @@
       "mutable_latest_alias": false
     },
     "publication": {
-      "status": "uploaded_pending_public_visibility",
+      "status": "pending_publication",
       "github_release": {
         "repository": "EvoMap/LongWoF-Bench-public",
-        "tag": "v1.0.1",
-        "release_url": "https://github.com/EvoMap/LongWoF-Bench-public/releases/tag/v1.0.1"
+        "tag": "v1.0.2",
+        "release_url": "https://github.com/EvoMap/LongWoF-Bench-public/releases/tag/v1.0.2"
       }
     }
   },

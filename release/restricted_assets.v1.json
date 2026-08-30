@@ -1,0 +1,57 @@
+{
+  "schema_version": "longwof.restricted-assets.v1",
+  "project": "LongWoF-Bench",
+  "status": "excluded_from_v1.0.2",
+  "policy": {
+    "distribution": "excluded",
+    "public_download": false,
+    "public_mirror": false,
+    "automatic_install": false,
+    "redistribution_grant_located": false
+  },
+  "present_in_versions": [
+    "1.0.0",
+    "1.0.1"
+  ],
+  "assets": [
+    {
+      "task_id": "T0498",
+      "source_task_id": "taxonomy-tree-merge",
+      "files": [
+        "environments/T0498/environment/data/amazon_product_categories.csv",
+        "environments/T0498/environment/data/amazon_product_categories_full.csv",
+        "runtime/T0498/data/amazon_product_categories.csv"
+      ],
+      "origin": "ASIN Spotlight category list, derived from the Amazon Browse Node structure",
+      "origin_url": "https://www.asinspotlight.com/amz-categories-list-csv",
+      "rights_holder": "Amazon.com, Inc.",
+      "assessment": "proprietary; no redistribution grant located"
+    },
+    {
+      "task_id": "T0498",
+      "source_task_id": "taxonomy-tree-merge",
+      "files": [
+        "environments/T0498/environment/data/fb_product_categories.csv",
+        "runtime/T0498/data/fb_product_categories.csv"
+      ],
+      "origin": "Meta Marketing API product-category taxonomy",
+      "origin_url": "https://developers.facebook.com/docs/marketing-api/catalog/guides/product-categories/",
+      "rights_holder": "Meta Platforms, Inc.",
+      "assessment": "proprietary; governed by Meta platform terms"
+    },
+    {
+      "task_id": "T0498",
+      "source_task_id": "taxonomy-tree-merge",
+      "files": [
+        "environments/T0498/environment/data/google_shopping_product_categories.csv",
+        "runtime/T0498/data/google_shopping_product_categories.csv"
+      ],
+      "origin": "Google Shopping product taxonomy, obtained via a third-party listing",
+      "origin_url": "https://feedonomics.com/google_shopping_categories.html",
+      "rights_holder": "Google LLC",
+      "assessment": "freely published open standard, but no explicit redistribution licence; removed for consistency with the other two"
+    }
+  ],
+  "user_guidance": "A user who obtains these taxonomies directly from their rights holders under the applicable terms can place them at the recorded paths. LongWoF-Bench never downloads, copies, or redistributes them.",
+  "policy_rule_id": "exclude_thirdparty_ecommerce_taxonomies"
+}

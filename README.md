@@ -8,7 +8,7 @@
   <a href="https://arxiv.org/abs/2608.23200"><img src="https://img.shields.io/badge/arXiv-2608.23200-b31b1b.svg" alt="arXiv"></a>
   <a href="https://huggingface.co/datasets/EvoMapAI/LongWoF-Bench"><img src="https://img.shields.io/badge/Hugging%20Face-Dataset-yellow.svg" alt="Hugging Face dataset"></a>
   <a href="https://github.com/EvoMap/LongWoF-Bench-public/actions/workflows/ci.yml"><img src="https://github.com/EvoMap/LongWoF-Bench-public/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="release/public_data_artifact.v1.json"><img src="https://img.shields.io/badge/public%20release-v1.0.1-0f766e.svg" alt="public release v1.0.1"></a>
+  <a href="release/public_data_artifact.v1.json"><img src="https://img.shields.io/badge/public%20release-v1.0.2-0f766e.svg" alt="public release v1.0.2"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-Apache--2.0-3da639.svg" alt="Apache License 2.0"></a>
 </p>
 
@@ -177,7 +177,7 @@ arms of the comparison are reproducible from this repository.
 
 ## Public release boundary
 
-This repository is the **v1.0.1 public code and research-evidence release**.
+This repository is the **v1.0.2 public code and research-evidence release**.
 The official task prompts, runtime inputs, and final tested Skill/Gene contexts
 are distributed separately as the versioned public data archive described by
 [`release/public_data_artifact.v1.json`](release/public_data_artifact.v1.json).
@@ -188,8 +188,8 @@ authoring task tree. Running [`synth/`](synth/) regenerates that material
 locally; it is never published.
 
 The release boundary is audited and pinned to release ID
-`aebd799c580e4985ca590409`. After excluding the restricted Skill directories,
-the public data archive contains 4,420 audited records; its code/data split,
+`ad87fa3c374e7098d712d7a6`. After excluding the restricted Skill directories,
+the public data archive contains 4,412 audited records; its code/data split,
 checksums, and Sigstore metadata are recorded in
 [`release/asset_policy.v1.json`](release/asset_policy.v1.json),
 [`release/stage_c_release.v1.json`](release/stage_c_release.v1.json), and the
@@ -205,20 +205,27 @@ credential, or automatic installer for these packages. See
 [`restricted Skill guide`](docs/RESTRICTED_SKILLS.md) for the task-level
 boundary and the read-only local presence check.
 
+Task `T0498` additionally bundled Amazon, Meta, and Google product-category
+taxonomies for which no redistribution licence could be established. They are
+excluded from the archive from v1.0.2 onward by the same mechanism; the task's
+own data README is retained so a user who obtains the taxonomies from their
+rights holders knows where they belong. See
+[`release/restricted_assets.v1.json`](release/restricted_assets.v1.json).
+
 ## Quick start
 
 The code repository alone is intentionally not a complete task pool. Download
-the public data archive from the `v1.0.1` GitHub Release, verify it, and unpack
+the public data archive from the `v1.0.2` GitHub Release, verify it, and unpack
 it into a directory that provides the canonical `tasks_final/` layout:
 
 ```bash
-BASE=https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.1
-ARCHIVE=taskgenome-bench-public-data-v1.0.1.tar.gz
+BASE=https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.2
+ARCHIVE=taskgenome-bench-public-data-v1.0.2.tar.gz
 
 curl --fail --location --remote-name "$BASE/$ARCHIVE"
 curl --fail --location --remote-name "$BASE/$ARCHIVE.sha256"
 sha256sum --check "$ARCHIVE.sha256"
-tar -xzf "$ARCHIVE"          # unpacks taskgenome-bench-public-data-v1.0.1/
+tar -xzf "$ARCHIVE"          # unpacks taskgenome-bench-public-data-v1.0.2/
 ```
 
 The archive is also signed. The signature identity is this repository's release

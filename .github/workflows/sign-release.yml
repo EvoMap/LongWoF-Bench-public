@@ -11,11 +11,11 @@ on:
       tag:
         description: Release tag carrying the archive
         required: true
-        default: v1.0.1
+        default: v1.0.2
       archive:
         description: Archive basename
         required: true
-        default: taskgenome-bench-public-data-v1.0.1.tar.gz
+        default: taskgenome-bench-public-data-v1.0.2.tar.gz
 
 permissions:
   contents: write

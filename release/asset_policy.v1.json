@@ -104,6 +104,32 @@
       }
     },
     {
+      "id": "exclude_thirdparty_ecommerce_taxonomies",
+      "priority": 950,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": [
+          "T0498"
+        ],
+        "relpaths": [
+          "data/amazon_product_categories.csv",
+          "data/amazon_product_categories_full.csv",
+          "data/fb_product_categories.csv",
+          "data/google_shopping_product_categories.csv",
+          "environment/data/amazon_product_categories.csv",
+          "environment/data/amazon_product_categories_full.csv",
+          "environment/data/fb_product_categories.csv",
+          "environment/data/google_shopping_product_categories.csv"
+        ]
+      },
+      "classification": {
+        "distribution": "excluded",
+        "role": "excluded.third_party.restricted_data",
+        "materialize": false
+      }
+    },
+    {
       "id": "private_canonical_manifest",
       "priority": 500,
       "match": {

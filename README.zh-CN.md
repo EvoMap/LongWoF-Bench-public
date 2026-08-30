@@ -8,7 +8,7 @@
   <a href="https://arxiv.org/abs/2608.23200"><img src="https://img.shields.io/badge/arXiv-2608.23200-b31b1b.svg" alt="论文"></a>
   <a href="https://huggingface.co/datasets/EvoMapAI/LongWoF-Bench"><img src="https://img.shields.io/badge/Hugging%20Face-Dataset-yellow.svg" alt="Hugging Face 数据集"></a>
   <a href="https://github.com/EvoMap/LongWoF-Bench-public/actions/workflows/ci.yml"><img src="https://github.com/EvoMap/LongWoF-Bench-public/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="release/public_data_artifact.v1.json"><img src="https://img.shields.io/badge/public%20release-v1.0.1-0f766e.svg" alt="public release v1.0.1"></a>
+  <a href="release/public_data_artifact.v1.json"><img src="https://img.shields.io/badge/public%20release-v1.0.2-0f766e.svg" alt="public release v1.0.2"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-Apache--2.0-3da639.svg" alt="Apache License 2.0"></a>
 </p>
 
@@ -157,15 +157,15 @@ Skill 基线由 [`eval/generate_agent_skills_v3.py`](eval/generate_agent_skills_
 
 ## 公开发布边界
 
-本仓库是 **v1.0.1 公开代码与研究证据发布版**。官方任务规范、运行时输入以及
+本仓库是 **v1.0.2 公开代码与研究证据发布版**。官方任务规范、运行时输入以及
 最终测试版 Skill/Gene 上下文会以独立的公开数据包形式发布，元数据见
 [`release/public_data_artifact.v1.json`](release/public_data_artifact.v1.json)。仓库
 本身包含合成任务、Skill 与 Gene 的代码，但不包含这些代码产出的材料：不会包含
 私有验证器、隐藏测试、金标准输出、参考解、原始轨迹或作者任务树。运行
 [`synth/`](synth/) 会在本地重新生成这些材料，它们不会被发布。
 
-发布边界已完成审计，并绑定到 release ID `aebd799c580e4985ca590409`。排除受限
-Skill 目录后，公开数据包包含 4,420 条审计记录；代码/数据拆分、校验和与
+发布边界已完成审计，并绑定到 release ID `ad87fa3c374e7098d712d7a6`。排除受限
+Skill 目录后，公开数据包包含 4,412 条审计记录；代码/数据拆分、校验和与
 Sigstore 元数据见
 [`release/asset_policy.v1.json`](release/asset_policy.v1.json)、
 [`release/stage_c_release.v1.json`](release/stage_c_release.v1.json)和上述发布记录。
@@ -177,19 +177,24 @@ Sigstore 元数据见
 只读本地存在性检查见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) 和
 [`受限 Skill 指南`](docs/RESTRICTED_SKILLS.md)。
 
+任务 `T0498` 另外打包了 Amazon、Meta 与 Google 的商品类目体系，均未能确认再分发
+许可。自 v1.0.2 起，它们通过同一机制从归档中排除；该任务自带的数据 README 予以
+保留，便于自行从权利人处获得这些数据的用户知道放置位置。参见
+[`release/restricted_assets.v1.json`](release/restricted_assets.v1.json)。
+
 ## 快速开始
 
-代码仓库本身有意不包含完整任务池。请从 `v1.0.1` GitHub Release 下载公开数据包，
+代码仓库本身有意不包含完整任务池。请从 `v1.0.2` GitHub Release 下载公开数据包，
 校验后解压到一个提供标准 `tasks_final/` 布局的目录：
 
 ```bash
-BASE=https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.1
-ARCHIVE=taskgenome-bench-public-data-v1.0.1.tar.gz
+BASE=https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.2
+ARCHIVE=taskgenome-bench-public-data-v1.0.2.tar.gz
 
 curl --fail --location --remote-name "$BASE/$ARCHIVE"
 curl --fail --location --remote-name "$BASE/$ARCHIVE.sha256"
 sha256sum --check "$ARCHIVE.sha256"
-tar -xzf "$ARCHIVE"          # 解出 taskgenome-bench-public-data-v1.0.1/
+tar -xzf "$ARCHIVE"          # 解出 taskgenome-bench-public-data-v1.0.2/
 ```
 
 数据包同时带有签名。签名身份是本仓库的发布工作流而非某个人，因此验签时应同时

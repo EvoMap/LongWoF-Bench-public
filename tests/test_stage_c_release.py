@@ -74,7 +74,7 @@ def test_checked_in_stage_c_policy_validates_and_metrics_header_is_allowlisted()
     assert policy["evaluation"]["public_dev"]["scored"] is False
     publication = artifact["publication"]
     assert publication["version"] == artifact["version"] == policy["versions"]["public_data"]
-    assert publication["github_release"]["tag"] == "v1.0.1"
+    assert publication["github_release"]["tag"] == f"v{policy['versions']['public_data']}"
     assert publication["github_release"]["archive_url"].endswith(artifact["archive"])
     assert publication["github_release"]["sha256_url"].endswith(artifact["sha256_sidecar"])
     # anonymous_download is derived, never asserted on its own: bytes can be

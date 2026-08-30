@@ -1,0 +1,59 @@
+{
+  "schema_version": "taskgenome.third-party-sources.v1",
+  "project": "TaskGenome Bench",
+  "version": "1.0.0",
+  "review_state": "private_prerelease_documented_publication_review_pending",
+  "upstreams": [
+    {
+      "name": "SkillsBench",
+      "repository": "https://github.com/benchflow-ai/skillsbench",
+      "revision": "5720102e3d6b0d3471b9715995ff96144d9eefb7",
+      "license": "Apache-2.0",
+      "relationship": "adapted_tasks",
+      "affected_task_ids": {
+        "first": "T0452",
+        "last": "T0498",
+        "count": 47,
+        "contiguous": true
+      },
+      "upstream_mapping": "tasks_final/scenarios/{task_id}/metadata.json#source.task_id",
+      "root_notice_present_at_revision": false,
+      "nested_source_review": "pending_for_final_public_release"
+    },
+    {
+      "name": "GuideBench",
+      "repository": "https://github.com/Dlxxx/GuideBench",
+      "revision": "78c5bfa42facee34db31e4ba03ad2c3b5a04bbbc",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 xiuxiu-boom",
+      "relationship": "methodological_influence",
+      "direct_final_task_count": 0,
+      "historical_authoring_scenarios": 35,
+      "historical_scenarios_in_public_bundle": false,
+      "influenced_final_task_ids": {
+        "first": "T0650",
+        "last": "T0808",
+        "count": 159,
+        "contiguous": true
+      }
+    }
+  ],
+  "known_nested_sources_requiring_final_review": [
+    {
+      "task_id": "T0454",
+      "description": "PB2002 plate-boundary data with embedded source citations"
+    },
+    {
+      "task_id": "T0485",
+      "description": "NASA budget source documentation"
+    },
+    {
+      "task_id": "T0493",
+      "description": "generated instance derived from an identified exam-scheduling MIP generator"
+    },
+    {
+      "task_id": "T0498",
+      "description": "Amazon, Facebook, and Google/Feedonomics product-category taxonomies"
+    }
+  ]
+}
