@@ -1,7 +1,7 @@
 # Third-Party Notices
 
 This notice describes third-party material and methodological influences in the
-LongWoF-Bench v1.0.1 public data release. It does not replace the license
+LongWoF-Bench v1.0.2 public data release. It does not replace the license
 texts distributed with the release, and it does not relicense third-party
 material under LongWoF-Bench's licenses.
 
