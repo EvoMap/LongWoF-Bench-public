@@ -1,5 +1,5 @@
 {
-  "file_count": 143,
+  "file_count": 145,
   "files": [
     {
       "mode": "0644",
@@ -11,7 +11,7 @@
     {
       "mode": "0644",
       "path": ".github/workflows/sign-release.yml",
-      "sha256": "43d4c74a8cba6105bb81ce79ec13c70a2807b3987ddc18bc40a5e6f39c0af6f6",
+      "sha256": "025f85589267c096b0fabe95dcdb04e12016e21824c6e69853843ec55079e3ce",
       "size": 2785,
       "source_relpath": "release/public_code/sign-release.yml"
     },
@@ -25,8 +25,8 @@
     {
       "mode": "0644",
       "path": "CHANGELOG.md",
-      "sha256": "ad1fada865112bc58093de56b813d0374e0fb3c2cc255c0e7884799331d840c7",
-      "size": 9529,
+      "sha256": "76c67ef2048448e3907a0a59b78786d2ef4d3562dabd768bcb81f690de4b7462",
+      "size": 12324,
       "source_relpath": "CHANGELOG.md"
     },
     {
@@ -46,8 +46,8 @@
     {
       "mode": "0644",
       "path": "DATA_LICENSE.md",
-      "sha256": "30a47c9cb960f2b9289cf44a67e771f0a8099e90a2bb7a8caf0a686613102bb3",
-      "size": 663,
+      "sha256": "ed58697558b5405cf02a9491eff7481e46e0731b420d1755f8d816ba51d86717",
+      "size": 1774,
       "source_relpath": "release/public_code/DATA_LICENSE.md"
     },
     {
@@ -60,15 +60,15 @@
     {
       "mode": "0644",
       "path": "README.md",
-      "sha256": "68ac98a794efc3941ebbd08d52f0372c7bb7e618c41607b47f784374cb2536c9",
-      "size": 16038,
+      "sha256": "340d569e7fbb7625a3a5df114219b085936a663a1f69812579773eb8355f615e",
+      "size": 16466,
       "source_relpath": "release/public_code/README.md"
     },
     {
       "mode": "0644",
       "path": "README.zh-CN.md",
-      "sha256": "52c8c1b5a5b28a2a8e2811a48bc1292ba3e6230c1740206f43ef659cffa684c3",
-      "size": 14826,
+      "sha256": "069ec25ff0f62716bfc49f59a08774ef5992aa5c6143ddf296ad8a918680c9ec",
+      "size": 15209,
       "source_relpath": "release/public_code/README.zh-CN.md"
     },
     {
@@ -81,8 +81,8 @@
     {
       "mode": "0644",
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "875656109c86bdddbb0c7c931f70051a3e11b7b5bb4b2b6f7a200966c281b4b4",
-      "size": 3785,
+      "sha256": "d14c25df3adf2058c405b3f9ec343bf79cf102f79e7fec33663632104acb6521",
+      "size": 6540,
       "source_relpath": "THIRD_PARTY_NOTICES.md"
     },
     {
@@ -298,8 +298,8 @@
     {
       "mode": "0644",
       "path": "release/asset_policy.v1.json",
-      "sha256": "f8616db30e0240e3ebfe7fb5804bc22509a99f4180f32377e448079ca34447f3",
-      "size": 26169,
+      "sha256": "fce3293ce027f2b77da56b0f703b3452adab899ac37f684a9e12b764efb1f12c",
+      "size": 27030,
       "source_relpath": "release/asset_policy.v1.json"
     },
     {
@@ -312,8 +312,8 @@
     {
       "mode": "0644",
       "path": "release/public_data_artifact.v1.json",
-      "sha256": "291efbf37c00ca31d5938f1b8e72ed4e705ed1f07bc2e82813b9a360cd5446d4",
-      "size": 1589,
+      "sha256": "003ceb17e35432226850d95531e5205291cc112112750f3c96616130194c589c",
+      "size": 1574,
       "source_relpath": "release/public_data_artifact.v1.json"
     },
     {
@@ -325,6 +325,13 @@
     },
     {
       "mode": "0644",
+      "path": "release/restricted_assets.v1.json",
+      "sha256": "6b473da9e716baa66f7975c319a9aaeeda13fc837db9cb65bb1b9a90e343dcad",
+      "size": 2408,
+      "source_relpath": "release/restricted_assets.v1.json"
+    },
+    {
+      "mode": "0644",
       "path": "release/restricted_skills.v1.json",
       "sha256": "07ba5686e014c2ff4944facb325796deb1799418afac1f3534d41878766d2b08",
       "size": 6137,
@@ -333,9 +340,16 @@
     {
       "mode": "0644",
       "path": "release/stage_c_release.v1.json",
-      "sha256": "41accbdc0d7f4ed6cd893caf8d22427a0735b0b297dd2275e6e829134b6bcf76",
-      "size": 13759,
+      "sha256": "99c93f13ab2c63a53bd99fa16e63b0f49962f8bf2c83a248fe4712588531c2b8",
+      "size": 13744,
       "source_relpath": "release/stage_c_release.v1.json"
+    },
+    {
+      "mode": "0644",
+      "path": "release/third_party_sources.v1.json",
+      "sha256": "efafb93f8c7911aacaa4156b3e85a6a98f2aff95e1ec60aaa96c273079877b6f",
+      "size": 1902,
+      "source_relpath": "release/third_party_sources.v1.json"
     },
     {
       "mode": "0644",
@@ -921,8 +935,8 @@
     {
       "mode": "0644",
       "path": "tests/test_stage_c_release.py",
-      "sha256": "4eccb04d7ae4de21c38d1ca3099c59011acdb35a0c49a9af5eef0810e56cb564",
-      "size": 11464,
+      "sha256": "4e9ab3a4b6f50b311ec4ec587d28912d262319dbd190e66103489019c1a64af8",
+      "size": 11495,
       "source_relpath": "tests/test_stage_c_release.py"
     },
     {
@@ -1012,5 +1026,5 @@
   "schema_version": "taskgenome.public-code-export.v1",
   "source_dirty": true,
   "source_revision": "880e9e0cf3b42b588fc5b7202f478ca53be15747",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
