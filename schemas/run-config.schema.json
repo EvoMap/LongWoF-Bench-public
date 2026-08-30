@@ -1,0 +1,392 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/run-config.schema.json",
+  "title": "TaskGenome Bench immutable run config v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "prompt_protocol",
+    "scoring_protocol",
+    "runtime_protocol",
+    "runtime_policy",
+    "legacy_v1_reference",
+    "args",
+    "cli_credentials_supplied",
+    "credential_sources",
+    "manifest_summary",
+    "manifest_sha256",
+    "official_policy",
+    "models",
+    "model_registry",
+    "price_table",
+    "api_protocol",
+    "conditions",
+    "selected_task_ids",
+    "genes_dir",
+    "gene_dirs",
+    "agent_skills_dir",
+    "default_skip_ids",
+    "effective_skip_ids",
+    "n_tasks_selected",
+    "n_trials_total",
+    "n_trials_pending_at_start",
+    "score_pass_threshold",
+    "budget",
+    "bedrock_thinking",
+    "bedrock_proxy",
+    "gemini_thinking",
+    "hardened_asset_boundary",
+    "reproducibility",
+    "run_fingerprint",
+    "started_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.run-config.v2"
+    },
+    "prompt_protocol": {
+      "const": "legacy-v1"
+    },
+    "scoring_protocol": {
+      "const": "legacy-v1"
+    },
+    "runtime_protocol": {
+      "enum": [
+        "legacy-v1",
+        "hardened-v2"
+      ]
+    },
+    "runtime_policy": {
+      "$ref": "#/$defs/runtimePolicy"
+    },
+    "legacy_v1_reference": {
+      "type": "object",
+      "required": [
+        "git_commit",
+        "run_official_sha256",
+        "api_sha256",
+        "manifest_sha256"
+      ]
+    },
+    "args": {
+      "type": "object"
+    },
+    "cli_credentials_supplied": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "credential_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(?:cli|unset|env:[A-Z0-9_]+)$"
+      }
+    },
+    "manifest_summary": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "official_policy": {
+      "type": "object"
+    },
+    "models": {
+      "$ref": "#/$defs/stringList"
+    },
+    "model_registry": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3
+      }
+    },
+    "price_table": {
+      "type": "object"
+    },
+    "api_protocol": {
+      "type": "object",
+      "required": [
+        "max_tokens",
+        "request_timeout_s",
+        "max_attempts",
+        "retry_base_delay_s",
+        "retry_max_delay_s",
+        "openai_compatible_temperature",
+        "evomap_max_tokens_cap",
+        "evomap_timeout_s",
+        "gemini_backend",
+        "gemini_reasoning_effort",
+        "gemini_vertex_project_id",
+        "gemini_vertex_location",
+        "bedrock_region",
+        "local_enable_thinking"
+      ]
+    },
+    "conditions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "selected_task_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^T\\d{4}$"
+      }
+    },
+    "genes_dir": {
+      "type": "string"
+    },
+    "gene_dirs": {
+      "type": "object"
+    },
+    "agent_skills_dir": {
+      "type": "string"
+    },
+    "default_skip_ids": {
+      "$ref": "#/$defs/stringList"
+    },
+    "effective_skip_ids": {
+      "$ref": "#/$defs/stringList"
+    },
+    "n_tasks_selected": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "n_trials_total": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "n_trials_pending_at_start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "score_pass_threshold": {
+      "type": "number"
+    },
+    "budget": {
+      "type": "object"
+    },
+    "bedrock_thinking": {
+      "type": "object"
+    },
+    "bedrock_proxy": {
+      "type": "object"
+    },
+    "gemini_thinking": {
+      "type": "object"
+    },
+    "hardened_asset_boundary": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "asset_policy_sha256",
+            "io_contract_schema_version",
+            "io_contract_sha256",
+            "image_identity"
+          ],
+          "properties": {
+            "asset_policy_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "io_contract_schema_version": {
+              "const": "taskgenome.hardened-io-contract.v1"
+            },
+            "io_contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "image_identity": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "image_id",
+                    "os",
+                    "architecture"
+                  ],
+                  "properties": {
+                    "image_id": {
+                      "type": "string",
+                      "pattern": "^sha256:[0-9a-f]{64}$"
+                    },
+                    "os": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "architecture": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibility"
+    },
+    "run_fingerprint": {
+      "$ref": "#/$defs/digest"
+    },
+    "started_at": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "digest"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "digest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "fileDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "digest",
+        "file_count"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "runtimePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol",
+        "backend",
+        "sandbox_image",
+        "memory",
+        "cpus",
+        "pids_limit",
+        "tmpfs_size",
+        "output_limit_bytes",
+        "allow_unpinned_image"
+      ],
+      "properties": {
+        "protocol": {
+          "enum": [
+            "legacy-v1",
+            "hardened-v2"
+          ]
+        },
+        "backend": {
+          "enum": [
+            "host",
+            "docker"
+          ]
+        },
+        "sandbox_image": {
+          "type": "string"
+        },
+        "memory": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*(?:b|k|kb|m|mb|g|gb|t|tb)?$"
+        },
+        "cpus": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 64
+        },
+        "pids_limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "tmpfs_size": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*(?:b|k|kb|m|mb|g|gb|t|tb)?$"
+        },
+        "output_limit_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        },
+        "allow_unpinned_image": {
+          "type": "boolean"
+        }
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hash_mode",
+        "asset_digest",
+        "source_digest",
+        "external_or_missing_asset_count",
+        "environment"
+      ],
+      "properties": {
+        "hash_mode": {
+          "enum": [
+            "core",
+            "full"
+          ]
+        },
+        "asset_digest": {
+          "$ref": "#/$defs/fileDigest"
+        },
+        "source_digest": {
+          "$ref": "#/$defs/fileDigest"
+        },
+        "external_or_missing_asset_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "environment": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

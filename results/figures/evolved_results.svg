@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="600" viewBox="0 0 1180 600">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#172033}.title{font-size:24px;font-weight:700}.small{font-size:13px}.model{font-size:14px}.axis{stroke:#cbd5e1;stroke-width:1}</style>
+<text x="40" y="38" class="title">Opus-evolved subset (252 tasks)</text>
+<text x="40" y="62" class="small">Strict task pass rate; one recorded trial per model-condition-task</text>
+<line x1="250.0" y1="80" x2="250.0" y2="510" class="axis"/>
+<text x="250.0" y="534" text-anchor="middle" class="small">0%</text>
+<line x1="426.0" y1="80" x2="426.0" y2="510" class="axis"/>
+<text x="426.0" y="534" text-anchor="middle" class="small">20%</text>
+<line x1="602.0" y1="80" x2="602.0" y2="510" class="axis"/>
+<text x="602.0" y="534" text-anchor="middle" class="small">40%</text>
+<line x1="778.0" y1="80" x2="778.0" y2="510" class="axis"/>
+<text x="778.0" y="534" text-anchor="middle" class="small">60%</text>
+<line x1="954.0" y1="80" x2="954.0" y2="510" class="axis"/>
+<text x="954.0" y="534" text-anchor="middle" class="small">80%</text>
+<line x1="1130.0" y1="80" x2="1130.0" y2="510" class="axis"/>
+<text x="1130.0" y="534" text-anchor="middle" class="small">100%</text>
+<text x="238" y="115.7" text-anchor="end" class="model">Anthropic Claude Opus 4.8</text>
+<rect x="250" y="87.0" width="482.2" height="11" rx="2" fill="#94a3b8"/>
+<text x="737.2" y="97.0" class="small">54.8</text>
+<rect x="250" y="101.0" width="562.3" height="11" rx="2" fill="#3b82f6"/>
+<text x="817.3" y="111.0" class="small">63.9</text>
+<rect x="250" y="115.0" width="698.7" height="11" rx="2" fill="#f97316"/>
+<text x="953.7" y="125.0" class="small">79.4</text>
+<text x="238" y="177.1" text-anchor="end" class="model">Anthropic Claude Sonnet 4.6</text>
+<rect x="250" y="148.4" width="390.7" height="11" rx="2" fill="#94a3b8"/>
+<text x="645.7" y="158.4" class="small">44.4</text>
+<rect x="250" y="162.4" width="489.3" height="11" rx="2" fill="#3b82f6"/>
+<text x="744.3" y="172.4" class="small">55.6</text>
+<rect x="250" y="176.4" width="583.4" height="11" rx="2" fill="#f97316"/>
+<text x="838.4" y="186.4" class="small">66.3</text>
+<text x="238" y="238.6" text-anchor="end" class="model">Google Gemini 3.1 Flash-Lite Preview</text>
+<rect x="250" y="209.9" width="310.6" height="11" rx="2" fill="#94a3b8"/>
+<text x="565.6" y="219.9" class="small">35.3</text>
+<rect x="250" y="223.9" width="397.8" height="11" rx="2" fill="#3b82f6"/>
+<text x="652.8" y="233.9" class="small">45.2</text>
+<rect x="250" y="237.9" width="475.2" height="11" rx="2" fill="#f97316"/>
+<text x="730.2" y="247.9" class="small">54.0</text>
+<text x="238" y="300.0" text-anchor="end" class="model">Google Gemini 3.1 Pro Preview</text>
+<rect x="250" y="271.3" width="418.9" height="11" rx="2" fill="#94a3b8"/>
+<text x="673.9" y="281.3" class="small">47.6</text>
+<rect x="250" y="285.3" width="555.3" height="11" rx="2" fill="#3b82f6"/>
+<text x="810.3" y="295.3" class="small">63.1</text>
+<rect x="250" y="299.3" width="635.4" height="11" rx="2" fill="#f97316"/>
+<text x="890.4" y="309.3" class="small">72.2</text>
+<text x="238" y="361.4" text-anchor="end" class="model">MiniMax M3</text>
+<rect x="250" y="332.7" width="338.8" height="11" rx="2" fill="#94a3b8"/>
+<text x="593.8" y="342.7" class="small">38.5</text>
+<rect x="250" y="346.7" width="443.5" height="11" rx="2" fill="#3b82f6"/>
+<text x="698.5" y="356.7" class="small">50.4</text>
+<rect x="250" y="360.7" width="558.8" height="11" rx="2" fill="#f97316"/>
+<text x="813.8" y="370.7" class="small">63.5</text>
+<text x="238" y="422.9" text-anchor="end" class="model">Qwen/Qwen3-Coder-30B-A3B-Instruct</text>
+<rect x="250" y="394.1" width="279.8" height="11" rx="2" fill="#94a3b8"/>
+<text x="534.8" y="404.1" class="small">31.8</text>
+<rect x="250" y="408.1" width="279.8" height="11" rx="2" fill="#3b82f6"/>
+<text x="534.8" y="418.1" class="small">31.8</text>
+<rect x="250" y="422.1" width="380.2" height="11" rx="2" fill="#f97316"/>
+<text x="635.2" y="432.1" class="small">43.2</text>
+<text x="238" y="484.3" text-anchor="end" class="model">Qwen/Qwen3.5-397B-A17B</text>
+<rect x="250" y="455.6" width="307.1" height="11" rx="2" fill="#94a3b8"/>
+<text x="562.1" y="465.6" class="small">34.9</text>
+<rect x="250" y="469.6" width="425.9" height="11" rx="2" fill="#3b82f6"/>
+<text x="680.9" y="479.6" class="small">48.4</text>
+<rect x="250" y="483.6" width="544.7" height="11" rx="2" fill="#f97316"/>
+<text x="799.7" y="493.6" class="small">61.9</text>
+<rect x="250" y="564" width="14" height="14" fill="#94a3b8"/>
+<text x="270" y="576" class="small">No context</text>
+<rect x="400" y="564" width="14" height="14" fill="#3b82f6"/>
+<text x="420" y="576" class="small">Skill</text>
+<rect x="550" y="564" width="14" height="14" fill="#f97316"/>
+<text x="570" y="576" class="small">Opus Gene</text>
+</svg>

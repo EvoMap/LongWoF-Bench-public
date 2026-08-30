@@ -1,0 +1,225 @@
+research_version,subset,family,model_alias,model_display_name,condition,n,passed,pass_rate_percent
+research-v1,full778,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,127,48,37.8
+research-v1,full778,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,127,69,54.3
+research-v1,full778,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,127,53,41.7
+research-v1,full778,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,127,62,48.8
+research-v1,full778,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,127,44,34.6
+research-v1,full778,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,127,58,45.7
+research-v1,full778,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,127,45,35.4
+research-v1,full778,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,127,50,39.4
+research-v1,full778,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,127,37,29.1
+research-v1,full778,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,127,47,37.0
+research-v1,full778,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,127,44,34.6
+research-v1,full778,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,127,48,37.8
+research-v1,full778,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,127,43,33.9
+research-v1,full778,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,127,62,48.8
+research-v1,full778,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,127,47,37.0
+research-v1,full778,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,127,54,42.5
+research-v1,full778,agent_env_synth,minimax_m3,MiniMax M3,no_context,127,34,26.8
+research-v1,full778,agent_env_synth,minimax_m3,MiniMax M3,with_skill,127,55,43.3
+research-v1,full778,agent_env_synth,minimax_m3,MiniMax M3,with_gene_gemini,127,43,33.9
+research-v1,full778,agent_env_synth,minimax_m3,MiniMax M3,with_gene_opus,127,50,39.4
+research-v1,full778,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,127,35,27.6
+research-v1,full778,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,127,41,32.3
+research-v1,full778,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,127,38,29.9
+research-v1,full778,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,127,44,34.6
+research-v1,full778,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,127,36,28.3
+research-v1,full778,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,127,47,37.0
+research-v1,full778,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,127,47,37.0
+research-v1,full778,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,127,50,39.4
+research-v1,full778,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,341,37,10.8
+research-v1,full778,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,341,123,36.1
+research-v1,full778,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,341,88,25.8
+research-v1,full778,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,341,112,32.8
+research-v1,full778,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,341,30,8.8
+research-v1,full778,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,341,98,28.7
+research-v1,full778,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,341,60,17.6
+research-v1,full778,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,341,98,28.7
+research-v1,full778,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,341,17,5.0
+research-v1,full778,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,341,70,20.5
+research-v1,full778,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,341,34,10.0
+research-v1,full778,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,341,67,19.7
+research-v1,full778,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,341,27,7.9
+research-v1,full778,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,341,114,33.4
+research-v1,full778,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,341,78,22.9
+research-v1,full778,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,341,83,24.3
+research-v1,full778,code_generation,minimax_m3,MiniMax M3,no_context,341,23,6.7
+research-v1,full778,code_generation,minimax_m3,MiniMax M3,with_skill,341,99,29.0
+research-v1,full778,code_generation,minimax_m3,MiniMax M3,with_gene_gemini,341,63,18.5
+research-v1,full778,code_generation,minimax_m3,MiniMax M3,with_gene_opus,341,88,25.8
+research-v1,full778,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,341,8,2.4
+research-v1,full778,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,341,28,8.2
+research-v1,full778,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,341,16,4.7
+research-v1,full778,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,341,33,9.7
+research-v1,full778,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,341,22,6.5
+research-v1,full778,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,341,79,23.2
+research-v1,full778,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,341,49,14.4
+research-v1,full778,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,341,74,21.7
+research-v1,full778,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,151,30,19.9
+research-v1,full778,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,151,27,17.9
+research-v1,full778,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,151,34,22.5
+research-v1,full778,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,151,42,27.8
+research-v1,full778,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,151,8,5.3
+research-v1,full778,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,151,9,6.0
+research-v1,full778,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,151,7,4.6
+research-v1,full778,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,151,8,5.3
+research-v1,full778,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,151,0,0.0
+research-v1,full778,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,151,0,0.0
+research-v1,full778,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,151,0,0.0
+research-v1,full778,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,151,0,0.0
+research-v1,full778,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,151,30,19.9
+research-v1,full778,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,151,26,17.2
+research-v1,full778,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,151,22,14.6
+research-v1,full778,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,151,26,17.2
+research-v1,full778,math_reasoning,minimax_m3,MiniMax M3,no_context,151,18,11.9
+research-v1,full778,math_reasoning,minimax_m3,MiniMax M3,with_skill,151,19,12.6
+research-v1,full778,math_reasoning,minimax_m3,MiniMax M3,with_gene_gemini,151,16,10.6
+research-v1,full778,math_reasoning,minimax_m3,MiniMax M3,with_gene_opus,151,19,12.6
+research-v1,full778,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,151,0,0.0
+research-v1,full778,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,151,0,0.0
+research-v1,full778,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,151,0,0.0
+research-v1,full778,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,151,0,0.0
+research-v1,full778,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,151,1,0.7
+research-v1,full778,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,151,7,4.6
+research-v1,full778,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,151,6,4.0
+research-v1,full778,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,151,5,3.3
+research-v1,full778,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,159,42,26.4
+research-v1,full778,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,159,91,57.2
+research-v1,full778,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,159,71,44.6
+research-v1,full778,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,159,89,56.0
+research-v1,full778,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,159,47,29.6
+research-v1,full778,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,159,92,57.9
+research-v1,full778,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,159,65,40.9
+research-v1,full778,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,159,86,54.1
+research-v1,full778,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,159,47,29.6
+research-v1,full778,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,159,93,58.5
+research-v1,full778,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,159,75,47.2
+research-v1,full778,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,159,79,49.7
+research-v1,full778,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,159,45,28.3
+research-v1,full778,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,159,99,62.3
+research-v1,full778,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,159,76,47.8
+research-v1,full778,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,159,102,64.1
+research-v1,full778,rule_following,minimax_m3,MiniMax M3,no_context,159,44,27.7
+research-v1,full778,rule_following,minimax_m3,MiniMax M3,with_skill,159,80,50.3
+research-v1,full778,rule_following,minimax_m3,MiniMax M3,with_gene_gemini,159,69,43.4
+research-v1,full778,rule_following,minimax_m3,MiniMax M3,with_gene_opus,159,90,56.6
+research-v1,full778,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,159,50,31.4
+research-v1,full778,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,159,65,40.9
+research-v1,full778,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,159,64,40.2
+research-v1,full778,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,159,70,44.0
+research-v1,full778,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,159,43,27.0
+research-v1,full778,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,159,85,53.5
+research-v1,full778,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,159,70,44.0
+research-v1,full778,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,159,98,61.6
+research-v1,opus_evolved252,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,64,48,75.0
+research-v1,opus_evolved252,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,64,43,67.2
+research-v1,opus_evolved252,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,64,49,76.6
+research-v1,opus_evolved252,agent_env_synth,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,64,53,82.8
+research-v1,opus_evolved252,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,64,43,67.2
+research-v1,opus_evolved252,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,64,35,54.7
+research-v1,opus_evolved252,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,64,42,65.6
+research-v1,opus_evolved252,agent_env_synth,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,64,48,75.0
+research-v1,opus_evolved252,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,64,36,56.2
+research-v1,opus_evolved252,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,64,29,45.3
+research-v1,opus_evolved252,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,64,43,67.2
+research-v1,opus_evolved252,agent_env_synth,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,64,46,71.9
+research-v1,opus_evolved252,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,64,42,65.6
+research-v1,opus_evolved252,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,64,38,59.4
+research-v1,opus_evolved252,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,64,46,71.9
+research-v1,opus_evolved252,agent_env_synth,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,64,50,78.1
+research-v1,opus_evolved252,agent_env_synth,minimax_m3,MiniMax M3,no_context,64,33,51.6
+research-v1,opus_evolved252,agent_env_synth,minimax_m3,MiniMax M3,with_skill,64,31,48.4
+research-v1,opus_evolved252,agent_env_synth,minimax_m3,MiniMax M3,with_gene_gemini,64,42,65.6
+research-v1,opus_evolved252,agent_env_synth,minimax_m3,MiniMax M3,with_gene_opus,64,47,73.4
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,64,35,54.7
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,64,26,40.6
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,64,38,59.4
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,64,42,65.6
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,64,35,54.7
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,64,30,46.9
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,64,46,71.9
+research-v1,opus_evolved252,agent_env_synth,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,64,49,76.6
+research-v1,opus_evolved252,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,62,35,56.5
+research-v1,opus_evolved252,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,62,44,71.0
+research-v1,opus_evolved252,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,62,46,74.2
+research-v1,opus_evolved252,code_generation,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,62,43,69.3
+research-v1,opus_evolved252,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,62,24,38.7
+research-v1,opus_evolved252,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,62,33,53.2
+research-v1,opus_evolved252,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,62,30,48.4
+research-v1,opus_evolved252,code_generation,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,62,39,62.9
+research-v1,opus_evolved252,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,62,14,22.6
+research-v1,opus_evolved252,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,62,23,37.1
+research-v1,opus_evolved252,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,62,19,30.6
+research-v1,opus_evolved252,code_generation,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,62,26,41.9
+research-v1,opus_evolved252,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,62,19,30.6
+research-v1,opus_evolved252,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,62,35,56.5
+research-v1,opus_evolved252,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,62,33,53.2
+research-v1,opus_evolved252,code_generation,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,62,32,51.6
+research-v1,opus_evolved252,code_generation,minimax_m3,MiniMax M3,no_context,62,18,29.0
+research-v1,opus_evolved252,code_generation,minimax_m3,MiniMax M3,with_skill,62,33,53.2
+research-v1,opus_evolved252,code_generation,minimax_m3,MiniMax M3,with_gene_gemini,62,25,40.3
+research-v1,opus_evolved252,code_generation,minimax_m3,MiniMax M3,with_gene_opus,62,33,53.2
+research-v1,opus_evolved252,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,62,7,11.3
+research-v1,opus_evolved252,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,62,10,16.1
+research-v1,opus_evolved252,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,62,9,14.5
+research-v1,opus_evolved252,code_generation,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,62,14,22.6
+research-v1,opus_evolved252,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,62,17,27.4
+research-v1,opus_evolved252,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,62,27,43.5
+research-v1,opus_evolved252,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,62,24,38.7
+research-v1,opus_evolved252,code_generation,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,62,25,40.3
+research-v1,opus_evolved252,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,30,13,43.3
+research-v1,opus_evolved252,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,30,13,43.3
+research-v1,opus_evolved252,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,30,15,50.0
+research-v1,opus_evolved252,math_reasoning,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,30,25,83.3
+research-v1,opus_evolved252,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,30,5,16.7
+research-v1,opus_evolved252,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,30,7,23.3
+research-v1,opus_evolved252,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,30,4,13.3
+research-v1,opus_evolved252,math_reasoning,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,30,6,20.0
+research-v1,opus_evolved252,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,30,19,63.3
+research-v1,opus_evolved252,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,30,18,60.0
+research-v1,opus_evolved252,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,30,16,53.3
+research-v1,opus_evolved252,math_reasoning,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,30,18,60.0
+research-v1,opus_evolved252,math_reasoning,minimax_m3,MiniMax M3,no_context,30,10,33.3
+research-v1,opus_evolved252,math_reasoning,minimax_m3,MiniMax M3,with_skill,30,12,40.0
+research-v1,opus_evolved252,math_reasoning,minimax_m3,MiniMax M3,with_gene_gemini,30,9,30.0
+research-v1,opus_evolved252,math_reasoning,minimax_m3,MiniMax M3,with_gene_opus,30,7,23.3
+research-v1,opus_evolved252,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,30,0,0.0
+research-v1,opus_evolved252,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,30,6,20.0
+research-v1,opus_evolved252,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,30,4,13.3
+research-v1,opus_evolved252,math_reasoning,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,30,4,13.3
+research-v1,opus_evolved252,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,96,42,43.8
+research-v1,opus_evolved252,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,96,61,63.5
+research-v1,opus_evolved252,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,96,55,57.3
+research-v1,opus_evolved252,rule_following,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,96,79,82.3
+research-v1,opus_evolved252,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,96,40,41.7
+research-v1,opus_evolved252,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,96,65,67.7
+research-v1,opus_evolved252,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,96,52,54.2
+research-v1,opus_evolved252,rule_following,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,96,74,77.1
+research-v1,opus_evolved252,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,96,39,40.6
+research-v1,opus_evolved252,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,96,62,64.6
+research-v1,opus_evolved252,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,96,56,58.3
+research-v1,opus_evolved252,rule_following,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,96,64,66.7
+research-v1,opus_evolved252,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,96,40,41.7
+research-v1,opus_evolved252,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,96,68,70.8
+research-v1,opus_evolved252,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,96,59,61.5
+research-v1,opus_evolved252,rule_following,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,96,82,85.4
+research-v1,opus_evolved252,rule_following,minimax_m3,MiniMax M3,no_context,96,36,37.5
+research-v1,opus_evolved252,rule_following,minimax_m3,MiniMax M3,with_skill,96,51,53.1
+research-v1,opus_evolved252,rule_following,minimax_m3,MiniMax M3,with_gene_gemini,96,52,54.2
+research-v1,opus_evolved252,rule_following,minimax_m3,MiniMax M3,with_gene_opus,96,73,76.0
+research-v1,opus_evolved252,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,96,38,39.6
+research-v1,opus_evolved252,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,96,44,45.8
+research-v1,opus_evolved252,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,96,46,47.9
+research-v1,opus_evolved252,rule_following,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,96,53,55.2
+research-v1,opus_evolved252,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,96,36,37.5
+research-v1,opus_evolved252,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,96,59,61.5
+research-v1,opus_evolved252,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,96,53,55.2
+research-v1,opus_evolved252,rule_following,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,96,78,81.2

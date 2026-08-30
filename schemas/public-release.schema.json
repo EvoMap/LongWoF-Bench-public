@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/public-release.schema.json",
+  "title": "TaskGenome Bench public release manifest",
+  "allOf": [
+    {
+      "$ref": "#/$defs/release"
+    },
+    {
+      "properties": {
+        "bundle": {
+          "const": "public"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^(?:/|.*(?:^|/)\\.\\.(?:/|$))"
+      }
+    },
+    "nullableTaskId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^T\\d{4}$"
+    },
+    "countMap": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_tasks",
+        "by_family",
+        "by_execution_mode",
+        "by_source"
+      ],
+      "properties": {
+        "total_tasks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "by_family": {
+          "$ref": "#/$defs/countMap"
+        },
+        "by_execution_mode": {
+          "$ref": "#/$defs/countMap"
+        },
+        "by_source": {
+          "$ref": "#/$defs/countMap"
+        }
+      }
+    },
+    "canonical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_sha256",
+        "ordered_task_ids_sha256",
+        "task_count",
+        "first_task_id",
+        "last_task_id",
+        "summary"
+      ],
+      "properties": {
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordered_task_ids_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "task_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "first_task_id": {
+          "$ref": "#/$defs/nullableTaskId"
+        },
+        "last_task_id": {
+          "$ref": "#/$defs/nullableTaskId"
+        },
+        "summary": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/summary"
+            }
+          ]
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_path",
+        "family",
+        "execution_mode",
+        "materialize",
+        "mode",
+        "role",
+        "sha256",
+        "size",
+        "source_relpath",
+        "task_id"
+      ],
+      "properties": {
+        "bundle_path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "family": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "execution_mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "materialize": {
+          "type": "boolean"
+        },
+        "mode": {
+          "enum": [
+            "0644",
+            "0755"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_relpath": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "task_id": {
+          "$ref": "#/$defs/nullableTaskId"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "release_id",
+        "bundle",
+        "canonical",
+        "policy_sha256",
+        "asset_count",
+        "asset_merkle_root",
+        "bundle_roots",
+        "assets"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "release_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{24}$"
+        },
+        "bundle": {
+          "enum": [
+            "public",
+            "private"
+          ]
+        },
+        "canonical": {
+          "$ref": "#/$defs/canonical"
+        },
+        "policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "asset_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "asset_merkle_root": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bundle_roots": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "public",
+            "private"
+          ],
+          "properties": {
+            "public": {
+              "$ref": "#/$defs/sha256"
+            },
+            "private": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/asset"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/budget-record.schema.json",
+  "title": "TaskGenome Bench budget record v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "runtime_protocol",
+    "run_fingerprint",
+    "trial_key",
+    "model_id",
+    "input_tokens",
+    "output_tokens",
+    "thoughts_tokens",
+    "cost_usd",
+    "cumulative_cost_usd"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.budget.v1"
+    },
+    "runtime_protocol": {
+      "enum": ["legacy-v1", "hardened-v2"]
+    },
+    "run_fingerprint": {
+      "$ref": "#/$defs/sha256"
+    },
+    "trial_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "output_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "thoughts_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_cost_usd": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

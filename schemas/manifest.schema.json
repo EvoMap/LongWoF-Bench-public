@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/manifest.schema.json",
+  "title": "TaskGenome Bench official manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pool",
+    "generated_at",
+    "source_paths",
+    "summary",
+    "build_stats",
+    "tasks",
+    "layout",
+    "skill_promotion",
+    "filter_note",
+    "filter_counts",
+    "dropped_tasks"
+  ],
+  "properties": {
+    "pool": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "source_paths": {
+      "type": "object"
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    },
+    "build_stats": {
+      "type": "object"
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    },
+    "layout": {
+      "type": "object"
+    },
+    "skill_promotion": {
+      "type": "object"
+    },
+    "filter_note": {
+      "type": "string"
+    },
+    "filter_counts": {
+      "type": "object"
+    },
+    "dropped_tasks": {
+      "type": "array"
+    }
+  },
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_tasks",
+        "by_family",
+        "by_execution_mode",
+        "by_source"
+      ],
+      "properties": {
+        "total_tasks": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "by_family": {
+          "$ref": "#/$defs/countMap"
+        },
+        "by_execution_mode": {
+          "$ref": "#/$defs/countMap"
+        },
+        "by_source": {
+          "$ref": "#/$defs/countMap"
+        }
+      }
+    },
+    "nullableString": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task",
+        "skill",
+        "ref",
+        "oracle",
+        "scenario",
+        "skill_oracle"
+      ],
+      "properties": {
+        "task": {
+          "const": "task.md"
+        },
+        "skill": {
+          "const": "SKILL.md"
+        },
+        "ref": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "oracle": {
+          "const": "test_script.py"
+        },
+        "scenario": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "skill_oracle": {
+          "const": "SKILL_oracle.md"
+        }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "anchor",
+        "n_pass",
+        "n_trials",
+        "verdict"
+      ],
+      "properties": {
+        "anchor": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "n_pass": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "n_trials": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "verdict": {
+          "$ref": "#/$defs/nullableString"
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "family",
+        "execution_mode",
+        "source",
+        "orig_id",
+        "answer_format",
+        "files",
+        "calibration",
+        "legacy_task_id",
+        "rel_dir"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^T\\d{4}$"
+        },
+        "family": {
+          "enum": [
+            "agent_env_synth",
+            "code_generation",
+            "math_reasoning",
+            "rule_following"
+          ]
+        },
+        "execution_mode": {
+          "enum": [
+            "guidebench_model_output_pytest",
+            "pytest_pkg",
+            "subprocess_cli",
+            "subprocess_cli_no_ref",
+            "subprocess_ref_runner",
+            "text_short_answer"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "orig_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "answer_format": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "files": {
+          "$ref": "#/$defs/files"
+        },
+        "calibration": {
+          "$ref": "#/$defs/calibration"
+        },
+        "legacy_task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rel_dir": {
+          "type": "string",
+          "pattern": "^scenarios/T\\d{4}$"
+        },
+        "dedup_key": {
+          "type": "string"
+        },
+        "source_run": {
+          "type": "string"
+        },
+        "has_reference_solution": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

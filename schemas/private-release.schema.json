@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/private-release.schema.json",
+  "title": "TaskGenome Bench private release manifest",
+  "allOf": [
+    {
+      "$ref": "public-release.schema.json#/$defs/release"
+    },
+    {
+      "properties": {
+        "bundle": {
+          "const": "private"
+        }
+      }
+    }
+  ]
+}

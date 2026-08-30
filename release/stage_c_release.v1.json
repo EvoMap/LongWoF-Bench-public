@@ -1,0 +1,486 @@
+{
+  "schema_version": "taskgenome.stage-c-release.v1",
+  "status": "adopted_pending_publication_gates",
+  "project": {
+    "name": "LongWoF-Bench",
+    "repository_slug": "EvoMap/LongWoF-Bench-public",
+    "code_repository_url": "https://github.com/EvoMap/LongWoF-Bench-public"
+  },
+  "versions": {
+    "code": "1.0.1",
+    "public_data": "1.0.1",
+    "private_assets": "1.0.1"
+  },
+  "licenses": {
+    "code": {
+      "spdx": "Apache-2.0",
+      "applies_to": "generated public code repository",
+      "publication_gate": "rightsholder approval and third-party notice audit"
+    },
+    "public_data": {
+      "spdx": "CC-BY-4.0",
+      "applies_to": "versioned public data archive",
+      "publication_gate": "rightsholder approval and per-asset provenance audit"
+    },
+    "private_assets": {
+      "spdx": null,
+      "distribution": "prohibited"
+    }
+  },
+  "evaluation": {
+    "mode": "public-dev-hidden-test",
+    "public_dev": {
+      "scored": false,
+      "membership": "separate synthetic examples with D identifiers",
+      "judge_distribution": "public"
+    },
+    "hidden_test": {
+      "task_count": 778,
+      "membership": "official frozen T task set",
+      "judge_distribution": "private",
+      "evaluation_service_required": true
+    }
+  },
+  "per_task_metrics": {
+    "publish": true,
+    "artifact": "results/task_metrics.csv",
+    "allowed_fields": [
+      "release_id",
+      "task_id",
+      "family",
+      "source",
+      "execution_mode",
+      "model_alias",
+      "model_display_name",
+      "requested_model_id",
+      "provider",
+      "condition",
+      "passed",
+      "input_tokens",
+      "output_tokens",
+      "thoughts_tokens",
+      "total_tokens",
+      "opus_gene_source",
+      "subset",
+      "subset_memberships",
+      "source_run_id",
+      "source_segment",
+      "protocol",
+      "runner_seed",
+      "provider_sampling_seed",
+      "trial_count",
+      "manifest_sha256",
+      "skill_asset_set_sha256",
+      "opus_gene_asset_set_sha256",
+      "gemini_gene_asset_set_sha256"
+    ],
+    "forbidden_fields": [
+      "raw_response",
+      "prompt",
+      "extracted_code",
+      "stdout",
+      "stderr",
+      "traceback",
+      "judge_detail",
+      "gold",
+      "reference_solution"
+    ]
+  },
+  "public_data": {
+    "artifact_basename": "taskgenome-bench-public-data-v1.0.1",
+    "archive_format": "tar.gz",
+    "release_id": "aebd799c580e4985ca590409",
+    "expected_asset_count": 4420,
+    "expected_unpacked_asset_bytes": 574031496,
+    "integrity": "SHA-256",
+    "authentication": "Sigstore keyless bundle",
+    "archive": {
+      "primary": "GitHub Release asset",
+      "mirror": null,
+      "mutable_latest_alias": false
+    },
+    "publication": {
+      "status": "uploaded_pending_public_visibility",
+      "github_release": {
+        "repository": "EvoMap/LongWoF-Bench-public",
+        "tag": "v1.0.1",
+        "release_url": "https://github.com/EvoMap/LongWoF-Bench-public/releases/tag/v1.0.1"
+      }
+    }
+  },
+  "private_package": {
+    "contents": [
+      "judges",
+      "gold outputs",
+      "reference solutions",
+      "oracle assets",
+      "authoring traces",
+      "provenance",
+      "historical raw runs"
+    ],
+    "storage": "encrypted access-controlled private archive",
+    "public_upload": false,
+    "public_ci_access": false
+  },
+  "clean_history": {
+    "method": "fresh whitelist export followed by git init",
+    "forbidden_methods": [
+      "renaming the authoring repository",
+      "publishing the authoring .git object database",
+      "assuming history rewrite removes every private blob"
+    ],
+    "branch": "main",
+    "tag": "v1.0.1",
+    "commit_identity": {
+      "author_name": "Codex Release Builder",
+      "author_email": "codex-release@users.noreply.github.com"
+    },
+    "commit_date": "2000-01-01T00:00:00+0000",
+    "initial_commit_message": "LongWoF-Bench public release v1.0.1",
+    "forbidden_history_path_regexes": [
+      "(?:^|/)docs/(?:tech_report|blog)(?:/|$)",
+      "(?:^|/)_runs(?:/|$)"
+    ],
+    "forbidden_history_content_regexes": [
+      "(?i)[a-z0-9._%+-]+@(?:gmail|googlemail|qq|163|126|outlook|hotmail|yahoo)[.]com",
+      "(?i)huggingface[.]co/(?:datasets|models)/(?!EvoMapAI/)[A-Za-z0-9._-]+",
+      "(?i)huggingface[.]co/(?!datasets/|models/|EvoMapAI/)[A-Za-z0-9._-]+/",
+      "https://github[.]com/EvoMap/TaskGenome[-]Bench(?:[/\\\\?#)]|$)"
+    ]
+  },
+  "code_export": {
+    "forbidden_path_components": [
+      ".git",
+      "_runs",
+      "tasks_final",
+      "judge",
+      "gold",
+      "_gold",
+      "oracle",
+      "trace",
+      "traces",
+      "_traces",
+      "_sample_pilot",
+      "candidates",
+      "candidates_sf",
+      "_calibration",
+      "_bad_solutions",
+      "_quarantine",
+      "_model_runs"
+    ],
+    "forbidden_basenames": [
+      "reference_solution.py",
+      "reference_solution.sh",
+      "test_script.py",
+      "scenario.yaml",
+      "cases.jsonl",
+      "results.jsonl",
+      "run_events.jsonl"
+    ],
+    "forbidden_content_regexes": [
+      "-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
+      "AKIA[0-9A-Z]{16}",
+      "(?i)(?:api[_-]?key|token|secret|password)\\s*[:=]\\s*['\\\"][A-Za-z0-9_./+=-]{16,}['\\\"]",
+      "(?i)authorization\\s*[:=]\\s*['\\\"](?:bearer|basic)\\s+[A-Za-z0-9_./+=-]{12,}['\\\"]",
+      "/data/[A-Za-z0-9._-]+/(?:_[A-Za-z0-9.-]*tmp|gene[_-]?bench(?:[_/]|$)|longwof(?:[_/]|$))",
+      "(?<![A-Za-z0-9])_runs[/][A-Za-z0-9._-]+/",
+      "(?i)sub2api-api\\.[A-Za-z0-9.-]+",
+      "(?<![A-Za-z0-9._-])/home/[A-Za-z0-9._-]+/",
+      "(?<![A-Za-z0-9._-])/Users/[A-Za-z0-9._-]+/",
+      "(?<![A-Za-z0-9._-])/data/[A-Za-z0-9._-]+/"
+    ],
+    "copy_files": [
+      {
+        "source": "release/public_code/README.md",
+        "destination": "README.md"
+      },
+      {
+        "source": "release/public_code/README.zh-CN.md",
+        "destination": "README.zh-CN.md"
+      },
+      {
+        "source": "release/public_code/LICENSE",
+        "destination": "LICENSE"
+      },
+      {
+        "source": "release/public_code/DATA_LICENSE.md",
+        "destination": "DATA_LICENSE.md"
+      },
+      {
+        "source": "release/public_code/gitignore",
+        "destination": ".gitignore"
+      },
+      {
+        "source": "release/public_code/ci.yml",
+        "destination": ".github/workflows/ci.yml"
+      },
+      {
+        "source": "CHANGELOG.md",
+        "destination": "CHANGELOG.md"
+      },
+      {
+        "source": "CITATION.cff",
+        "destination": "CITATION.cff"
+      },
+      {
+        "source": "CONTRIBUTING.md",
+        "destination": "CONTRIBUTING.md"
+      },
+      {
+        "source": "SECURITY.md",
+        "destination": "SECURITY.md"
+      },
+      {
+        "source": "requirements.txt",
+        "destination": "requirements.txt"
+      },
+      {
+        "source": "environment.yml",
+        "destination": "environment.yml"
+      },
+      {
+        "source": "pytest.ini",
+        "destination": "pytest.ini"
+      },
+      {
+        "source": "docs/REPRODUCIBILITY.md",
+        "destination": "docs/REPRODUCIBILITY.md"
+      },
+      {
+        "source": "docs/RESEARCH_V1.md",
+        "destination": "docs/RESEARCH_V1.md"
+      },
+      {
+        "source": "docs/RELEASE_ASSETS.md",
+        "destination": "docs/RELEASE_ASSETS.md"
+      },
+      {
+        "source": "docs/STAGE_C_RELEASE.md",
+        "destination": "docs/STAGE_C_RELEASE.md"
+      },
+      {
+        "source": "eval/__init__.py",
+        "destination": "eval/__init__.py"
+      },
+      {
+        "source": "eval/api.py",
+        "destination": "eval/api.py"
+      },
+      {
+        "source": "eval/compare_runs.py",
+        "destination": "eval/compare_runs.py"
+      },
+      {
+        "source": "eval/reproducibility.py",
+        "destination": "eval/reproducibility.py"
+      },
+      {
+        "source": "eval/run_official.py",
+        "destination": "eval/run_official.py"
+      },
+      {
+        "source": "eval/runtime_policy.py",
+        "destination": "eval/runtime_policy.py"
+      },
+      {
+        "source": "tools/release_assets.py",
+        "destination": "tools/release_assets.py"
+      },
+      {
+        "source": "tools/research_results.py",
+        "destination": "tools/research_results.py"
+      },
+      {
+        "source": "tools/stage_c_release.py",
+        "destination": "tools/stage_c_release.py"
+      },
+      {
+        "source": "tools/public_data_smoke.py",
+        "destination": "tools/public_data_smoke.py"
+      },
+      {
+        "source": "release/asset_policy.v1.json",
+        "destination": "release/asset_policy.v1.json"
+      },
+      {
+        "source": "release/hardened_io_contract.v1.json",
+        "destination": "release/hardened_io_contract.v1.json"
+      },
+      {
+        "source": "release/quality_report.v1.json",
+        "destination": "release/quality_report.v1.json"
+      },
+      {
+        "source": "release/public_data_artifact.v1.json",
+        "destination": "release/public_data_artifact.v1.json"
+      },
+      {
+        "source": "release/stage_c_release.v1.json",
+        "destination": "release/stage_c_release.v1.json"
+      },
+      {
+        "source": "tests/conftest.py",
+        "destination": "tests/conftest.py"
+      },
+      {
+        "source": "tests/test_unit_api_security.py",
+        "destination": "tests/test_unit_api_security.py"
+      },
+      {
+        "source": "tests/test_unit_compare_protocols.py",
+        "destination": "tests/test_unit_compare_protocols.py"
+      },
+      {
+        "source": "tests/test_unit_reproducibility.py",
+        "destination": "tests/test_unit_reproducibility.py"
+      },
+      {
+        "source": "tests/test_unit_research_results.py",
+        "destination": "tests/test_unit_research_results.py"
+      },
+      {
+        "source": "tests/test_stage_c_release.py",
+        "destination": "tests/test_stage_c_release.py"
+      },
+      {
+        "source": "eval/gen_genes_llm_v3.py",
+        "destination": "eval/gen_genes_llm_v3.py"
+      },
+      {
+        "source": "eval/evolve_genes_v3.py",
+        "destination": "eval/evolve_genes_v3.py"
+      },
+      {
+        "source": "eval/generate_agent_skills_v3.py",
+        "destination": "eval/generate_agent_skills_v3.py"
+      },
+      {
+        "source": "eval/rewrite_skills_v3.py",
+        "destination": "eval/rewrite_skills_v3.py"
+      },
+      {
+        "source": "eval/compare_gene_rollout_tokens.py",
+        "destination": "eval/compare_gene_rollout_tokens.py"
+      },
+      {
+        "source": "tools/merge_run_supplement.py",
+        "destination": "tools/merge_run_supplement.py"
+      },
+      {
+        "source": "synth/__init__.py",
+        "destination": "synth/__init__.py"
+      },
+      {
+        "source": "synth/README.md",
+        "destination": "synth/README.md"
+      },
+      {
+        "source": "synth/llm_client.py",
+        "destination": "synth/llm_client.py"
+      },
+      {
+        "source": "synth/utils.py",
+        "destination": "synth/utils.py"
+      },
+      {
+        "source": "synth/run_solution_first.py",
+        "destination": "synth/run_solution_first.py"
+      },
+      {
+        "source": "synth/run_sample.py",
+        "destination": "synth/run_sample.py"
+      },
+      {
+        "source": "synth/retry_crashes.py",
+        "destination": "synth/retry_crashes.py"
+      },
+      {
+        "source": "synth/audit_env_host_pytest.py",
+        "destination": "synth/audit_env_host_pytest.py"
+      },
+      {
+        "source": "synth/mini_calibration.py",
+        "destination": "synth/mini_calibration.py"
+      },
+      {
+        "source": "synth/model_eval.py",
+        "destination": "synth/model_eval.py"
+      },
+      {
+        "source": "synth/consolidate.py",
+        "destination": "synth/consolidate.py"
+      },
+      {
+        "source": "synth/simplify_pool_layout.py",
+        "destination": "synth/simplify_pool_layout.py"
+      },
+      {
+        "source": "synth/promote_sanitized_skills.py",
+        "destination": "synth/promote_sanitized_skills.py"
+      },
+      {
+        "source": "synth/selftest.py",
+        "destination": "synth/selftest.py"
+      },
+      {
+        "source": "THIRD_PARTY_NOTICES.md",
+        "destination": "THIRD_PARTY_NOTICES.md"
+      },
+      {
+        "source": "docs/RESTRICTED_SKILLS.md",
+        "destination": "docs/RESTRICTED_SKILLS.md"
+      },
+      {
+        "source": "release/restricted_skills.v1.json",
+        "destination": "release/restricted_skills.v1.json"
+      },
+      {
+        "source": "tools/check_restricted_skills.py",
+        "destination": "tools/check_restricted_skills.py"
+      },
+      {
+        "source": "tests/test_unit_synthesis_surface.py",
+        "destination": "tests/test_unit_synthesis_surface.py"
+      },
+      {
+        "source": "release/public_code/sign-release.yml",
+        "destination": ".github/workflows/sign-release.yml"
+      }
+    ],
+    "copy_globs": [
+      {
+        "pattern": "schemas/*.json",
+        "strip_prefix": "",
+        "destination_root": ""
+      },
+      {
+        "pattern": "docker/**/*",
+        "strip_prefix": "",
+        "destination_root": ""
+      },
+      {
+        "pattern": "results/**/*",
+        "strip_prefix": "",
+        "destination_root": ""
+      },
+      {
+        "pattern": "release/public_code/examples/**/*",
+        "strip_prefix": "release/public_code",
+        "destination_root": ""
+      },
+      {
+        "pattern": "synth/shapes/**/*",
+        "strip_prefix": "",
+        "destination_root": ""
+      },
+      {
+        "pattern": "docs/assets/paper/**/*",
+        "strip_prefix": "",
+        "destination_root": ""
+      }
+    ],
+    "content_scan_exemptions": {
+      "tests/test_stage_c_release.py": "4eccb04d7ae4de21c38d1ca3099c59011acdb35a0c49a9af5eef0810e56cb564"
+    }
+  }
+}

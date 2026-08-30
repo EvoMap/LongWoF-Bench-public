@@ -1,0 +1,137 @@
+{
+  "schema_version": "longwof.restricted-skills.v1",
+  "project": "LongWoF-Bench",
+  "upstream": {
+    "name": "SkillsBench",
+    "repository": "https://github.com/benchflow-ai/skillsbench",
+    "revision": "5720102e3d6b0d3471b9715995ff96144d9eefb7"
+  },
+  "policy": {
+    "distribution": "excluded",
+    "public_download": false,
+    "public_mirror": false,
+    "automatic_install": false,
+    "written_rightsholder_permission_required": true,
+    "local_check_only": true
+  },
+  "user_guidance": {
+    "authorized_local_root": "A user-managed directory containing an independently authorized copy; LongWoF-Bench never downloads, copies, or redistributes these files.",
+    "checker": "python tools/check_restricted_skills.py --skills-root /path/to/authorized/scenarios",
+    "public_bundle_check": "python tools/check_restricted_skills.py --public-bundle /path/to/public/data"
+  },
+  "tasks": [
+    {
+      "task_id": "T0464",
+      "source_task_id": "protein-expression-analysis",
+      "restricted_skill_dirs": ["xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/protein-expression-analysis/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0465",
+      "source_task_id": "find-topk-similiar-chemicals",
+      "restricted_skill_dirs": ["pdf"],
+      "other_skill_dirs_requiring_review": ["pubchem-database", "rdkit"],
+      "license": "Anthropic proprietary for the listed restricted directory",
+      "license_urls": {
+        "pdf": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks-extra/find-topk-similiar-chemicals/environment/skills/pdf/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0466",
+      "source_task_id": "shock-analysis-demand",
+      "restricted_skill_dirs": ["xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/shock-analysis-demand/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0467",
+      "source_task_id": "shock-analysis-supply",
+      "restricted_skill_dirs": ["xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/shock-analysis-supply/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0469",
+      "source_task_id": "weighted-gdp-calc",
+      "restricted_skill_dirs": ["xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/weighted-gdp-calc/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0471",
+      "source_task_id": "financial-modeling-qa",
+      "restricted_skill_dirs": ["pdf", "xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "pdf": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/financial-modeling-qa/environment/skills/pdf/references/LICENSE.txt",
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/financial-modeling-qa/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0473",
+      "source_task_id": "reserves-at-risk-calc",
+      "restricted_skill_dirs": ["xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/reserves-at-risk-calc/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0482",
+      "source_task_id": "jpg-ocr-stat",
+      "restricted_skill_dirs": ["pdf", "xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "pdf": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/jpg-ocr-stat/environment/skills/pdf/LICENSE.txt",
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/jpg-ocr-stat/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0483",
+      "source_task_id": "exceltable-in-ppt",
+      "restricted_skill_dirs": ["pptx", "xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "pptx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/exceltable-in-ppt/environment/skills/pptx/LICENSE.txt",
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/exceltable-in-ppt/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0484",
+      "source_task_id": "pptx-reference-formatting",
+      "restricted_skill_dirs": ["pptx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "pptx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/pptx-reference-formatting/environment/skills/pptx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0485",
+      "source_task_id": "xlsx-recover-data",
+      "restricted_skill_dirs": ["xlsx"],
+      "license": "Anthropic proprietary",
+      "license_urls": {
+        "xlsx": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/xlsx-recover-data/environment/skills/xlsx/LICENSE.txt"
+      }
+    },
+    {
+      "task_id": "T0486",
+      "source_task_id": "latex-formula-extraction",
+      "restricted_skill_dirs": ["pdf"],
+      "other_skill_dirs_requiring_review": ["marker"],
+      "license": "Anthropic proprietary for the listed restricted directory",
+      "license_urls": {
+        "pdf": "https://github.com/benchflow-ai/skillsbench/blob/5720102e3d6b0d3471b9715995ff96144d9eefb7/tasks/latex-formula-extraction/environment/skills/pdf/LICENSE.txt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+"""Family-shared oracle for math_reasoning.
+
+Reads scenario.yaml from the candidate dir to learn the canonical
+`expected_answer` and `answer_format`, runs the candidate script,
+parses the `ANSWER: <X>` line, canonicalizes per answer_format, and
+emits the layered PASS/FAIL/SCORE protocol.
+
+Invocation:
+    python test_script.py --candidate <path_to_candidate_script>
+"""
+from __future__ import annotations
+
+import argparse
+import re
+import subprocess
+import sys
+from fractions import Fraction
+from pathlib import Path
+
+import yaml
+
+ANSWER_RE = re.compile(r"^ANSWER:\s*([^\n\r]+?)\s*$", re.MULTILINE | re.IGNORECASE)
+
+
+def _unbool(x):
+    """YAML 1.1 silently casts unquoted yes/no/on/off/true/false to bool."""
+    if isinstance(x, bool):
+        return "yes" if x else "no"
+    return str(x).strip()
+
+
+def canonicalize(raw: str, fmt: str, answer_space: list[str] | None = None) -> tuple[str, str | None]:
+    """Return (canonical_string, error). On any parse failure, error is set."""
+    s = raw.strip()
+    if fmt == "integer":
+        try:
+            return str(int(s)), None
+        except ValueError:
+            return s, f"not_integer:{s!r}"
+    if fmt == "fraction":
+        s_clean = s.replace(" ", "")
+        try:
+            f = Fraction(s_clean)
+            return f"{f.numerator}/{f.denominator}" if f.denominator != 1 else str(f.numerator), None
+        except (ValueError, ZeroDivisionError):
+            return s, f"not_fraction:{s!r}"
+    if fmt in ("pair_int", "tuple_int"):
+        s_clean = s.replace(" ", "").strip("()[]")
+        parts = s_clean.split(",")
+        try:
+            ints = tuple(int(p) for p in parts)
+        except ValueError:
+            return s, f"not_int_tuple:{s!r}"
+        return "(" + ",".join(str(i) for i in ints) + ")", None
+    if fmt == "enum":
+        space = [a.strip().lower() for a in (answer_space or [])]
+        if s.lower() not in space:
+            return s, f"not_in_enum:{s!r}; space={answer_space}"
+        return s.lower(), None
+    return s, f"unknown_format:{fmt}"
+
+
+def main() -> int:
+    p = argparse.ArgumentParser()
+    p.add_argument("--candidate", required=True)
+    p.add_argument("--scenario", default=None)
+    args = p.parse_args()
+
+    here = Path(__file__).resolve().parent
+    scenario_path = Path(args.scenario) if args.scenario else here / "scenario.yaml"
+    scen = yaml.safe_load(scenario_path.read_text(encoding="utf-8"))
+    expected = _unbool(scen.get("expected_answer", ""))
+    fmt = scen.get("answer_format")
+    answer_space = ([_unbool(x) for x in scen.get("answer_space", [])]
+                    if fmt == "enum" else None)
+    if not expected or not fmt:
+        print("FAIL:L0:scenario_missing_expected_or_format")
+        print("SCORE:0.0")
+        return 1
+
+    cand = Path(args.candidate).resolve()
+    if not cand.exists():
+        print(f"FAIL:L0:candidate_not_found:{cand}")
+        print("SCORE:0.0")
+        return 1
+
+    try:
+        proc = subprocess.run(
+            [sys.executable, str(cand)],
+            capture_output=True, text=True, timeout=30,
+        )
+    except subprocess.TimeoutExpired:
+        print("FAIL:L1:candidate_timeout_30s")
+        print("SCORE:0.0")
+        return 1
+
+    out = proc.stdout
+    m = ANSWER_RE.search(out)
+    if not m:
+        print(f"FAIL:L1:no_ANSWER_line; rc={proc.returncode}; "
+              f"stdout_tail={out[-200:]!r}; stderr_tail={proc.stderr[-200:]!r}")
+        print("SCORE:0.0")
+        return 1
+    print("PASS:L1:emit_format")
+
+    raw_got = m.group(1).strip()
+    canon_got, err = canonicalize(raw_got, fmt, answer_space)
+    if err:
+        print(f"FAIL:L2:canonicalize_failed:{err}")
+        print("SCORE:0.0")
+        return 1
+    canon_exp, exp_err = canonicalize(expected, fmt, answer_space)
+    if exp_err:
+        print(f"FAIL:L0:expected_canonicalize_failed:{exp_err}")
+        print("SCORE:0.0")
+        return 1
+    print("PASS:L2:answer_canonical")
+
+    if canon_got == canon_exp:
+        print("PASS:SCORE:1.0")
+        return 0
+    print(f"FAIL:SCORE:0.0; got={raw_got!r} (canon={canon_got!r}); expected={expected!r} (canon={canon_exp!r})")
+    print("SCORE:0.0")
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

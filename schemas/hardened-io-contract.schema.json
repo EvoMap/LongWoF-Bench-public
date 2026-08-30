@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/hardened-io-contract.schema.json",
+  "title": "TaskGenome hardened subprocess I/O contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "expected_manifest_sha256",
+    "execution_mode",
+    "limits",
+    "tasks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.hardened-io-contract.v1"
+    },
+    "expected_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "execution_mode": {
+      "const": "subprocess_ref_runner"
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_files",
+        "max_file_bytes",
+        "max_total_bytes"
+      ],
+      "properties": {
+        "max_files": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_file_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_total_bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "tasks": {
+      "type": "object",
+      "minProperties": 1,
+      "patternProperties": {
+        "^T\\d{4}$": {
+          "$ref": "#/$defs/task"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supported",
+        "reason",
+        "outputs"
+      ],
+      "properties": {
+        "supported": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/output"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "supported": {
+                "const": true
+              }
+            },
+            "required": [
+              "supported"
+            ]
+          },
+          "then": {
+            "properties": {
+              "reason": {
+                "maxLength": 0
+              },
+              "outputs": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "reason": {
+                "minLength": 1
+              },
+              "outputs": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_path",
+        "judge_path",
+        "required"
+      ],
+      "properties": {
+        "generation_path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "judge_path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "required": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

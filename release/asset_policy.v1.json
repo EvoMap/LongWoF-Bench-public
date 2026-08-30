@@ -1,0 +1,995 @@
+{
+  "schema_version": "1.0.0",
+  "policy_name": "taskgenome-bench-v3-official-778",
+  "expected_task_count": 778,
+  "expected_manifest_sha256": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d",
+  "expected_ordered_task_ids_sha256": "ebaae7f2252334ebccdead74b6c77f9653c615cd221a28b33821929b1619bcde",
+  "expected_public_contexts": {
+    "context.gene_gemini31pro": 778,
+    "context.gene_opus48": 778,
+    "context.legacy_skill": 778
+  },
+  "sources": {
+    "scenario_root": "scenarios",
+    "scan_non_official_scenarios": true,
+    "collections": [
+      {
+        "name": "gene_gemini31pro",
+        "path": "genes_gemini31pro",
+        "task_file_regex": "^(T\\d{4})\\.json$"
+      },
+      {
+        "name": "gene_opus48",
+        "path": "genes_opus48",
+        "task_file_regex": "^(T\\d{4})\\.json$"
+      },
+      {
+        "name": "public_agent_skill",
+        "path": "agent_skills_public_human_clean",
+        "task_file_regex": "^(T\\d{4})\\.md$"
+      },
+      {
+        "name": "rewritten_skill",
+        "path": "skills_rewritten_full",
+        "task_file_regex": "^(T\\d{4})\\.md$"
+      }
+    ]
+  },
+  "public_safety": {
+    "max_text_scan_bytes": 536870912,
+    "forbidden_asset_patterns": [
+      "*/_evolve_log.jsonl",
+      "*/_rewrite_log.jsonl",
+      "*/_agent_skill_log.jsonl"
+    ],
+    "forbidden_content_regexes": []
+  },
+  "rules": [
+    {
+      "id": "exclude_non_official_scenarios",
+      "priority": 1000,
+      "match": {
+        "scope": "scenario",
+        "official": false
+      },
+      "classification": {
+        "distribution": "excluded",
+        "role": "excluded.non_official_task",
+        "materialize": false
+      }
+    },
+    {
+      "id": "exclude_non_official_collection_tasks",
+      "priority": 1000,
+      "match": {
+        "scope": "collection",
+        "official": false
+      },
+      "classification": {
+        "distribution": "excluded",
+        "role": "excluded.non_official_task",
+        "materialize": false
+      }
+    },
+    {
+      "id": "exclude_skillsbench_restricted_skill_packages",
+      "priority": 950,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": [
+          "T0464",
+          "T0465",
+          "T0466",
+          "T0467",
+          "T0469",
+          "T0471",
+          "T0473",
+          "T0482",
+          "T0483",
+          "T0484",
+          "T0485",
+          "T0486"
+        ],
+        "relpaths": [
+          "skill/pdf/**",
+          "skill/pptx/**",
+          "skill/xlsx/**"
+        ]
+      },
+      "classification": {
+        "distribution": "excluded",
+        "role": "excluded.third_party.restricted_skill",
+        "materialize": false
+      }
+    },
+    {
+      "id": "private_canonical_manifest",
+      "priority": 500,
+      "match": {
+        "scope": "canonical",
+        "relpaths": "manifest.json"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "canonical.manifest",
+        "destination": "canonical/manifest.json",
+        "materialize": true
+      }
+    },
+    {
+      "id": "private_legacy_compatibility_policy",
+      "priority": 500,
+      "match": {
+        "scope": "canonical",
+        "relpaths": "legacy_v25_unrunnable.json"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "canonical.legacy_compatibility_policy",
+        "destination": "canonical/legacy_v25_unrunnable.json",
+        "materialize": true
+      }
+    },
+    {
+      "id": "private_historical_selftest_report",
+      "priority": 500,
+      "match": {
+        "scope": "canonical",
+        "relpaths": "selftest_report.json"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "quality.historical_selftest_report",
+        "destination": "quality/selftest_report.json",
+        "materialize": true
+      }
+    },
+    {
+      "id": "public_task_prompt",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "task.md"
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "prompt.task",
+        "destination": "tasks/{task_id}/task.md"
+      }
+    },
+    {
+      "id": "public_legacy_skill_context",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "SKILL.md"
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "context.legacy_skill",
+        "destination": "contexts/legacy_skill/{task_id}.md"
+      }
+    },
+    {
+      "id": "public_task_metadata",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "metadata.json"
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "metadata.task",
+        "destination": "metadata/{task_id}.json"
+      }
+    },
+    {
+      "id": "public_runtime_libraries",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": [
+          "package/**",
+          "acl/**",
+          "custom_reg/**",
+          "diag/**",
+          "eventsource/**",
+          "logparser/**",
+          "stat_tests/**",
+          "taxlib/**"
+        ]
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "runtime.library",
+        "destination": "runtime/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_official_skill_instructions",
+      "priority": 700,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": [
+          "skill/SKILL.md",
+          "skill/**/SKILL.md"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "authoring.oracle_runtime_copy",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "public_runtime_skill_packages",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "skill/**"
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "runtime.skill_package",
+        "destination": "runtime/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "public_environment_definitions",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "environment/**"
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "environment.definition",
+        "destination": "environments/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "public_ref_runner_input_data",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "execution_modes": "subprocess_ref_runner",
+        "relpaths": "data/**"
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "runtime.public_input",
+        "destination": "runtime/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_pytest_case_data",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "execution_modes": "pytest_pkg",
+        "relpaths": "data/**"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.fixture",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_generated_case_fixtures",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "_fixtures/**"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.fixture",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_gold_assets",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": [
+          "_gold/**",
+          "_gold.json"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.gold",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_evaluator",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "test_script.py"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.evaluator",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_references",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": [
+          "reference_solution.py",
+          "reference_solution.sh"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "reference.solution",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_oracle_skill",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "SKILL_oracle.md"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "authoring.oracle_skill",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_scenario_specification",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": "scenario.yaml"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "authoring.scenario",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_task_provenance",
+      "priority": 300,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": [
+          "_run_record.json",
+          "_variants.json"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.task",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "exclude_runtime_caches",
+      "priority": 700,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "relpaths": [
+          "__pycache__/**",
+          ".pytest_cache/**",
+          "*.pyc"
+        ]
+      },
+      "classification": {
+        "distribution": "excluded",
+        "role": "excluded.cache",
+        "materialize": false
+      }
+    },
+    {
+      "id": "public_sanitized_data_workbooks",
+      "priority": 800,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "source_relpaths": [
+          "scenarios/T0466/data/test_demand.xlsx",
+          "scenarios/T0467/data/test-supply.xlsx",
+          "scenarios/T0469/data/gdp.xlsx",
+          "scenarios/T0471/data/data.xlsx",
+          "scenarios/T0473/data/test-rar.xlsx"
+        ]
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "runtime.sanitized_ooxml_input",
+        "destination": "runtime/{task_id}/{relpath}",
+        "materialize": false,
+        "transform": "strip_ooxml_abs_path"
+      }
+    },
+    {
+      "id": "public_sanitized_environment_workbooks",
+      "priority": 800,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "source_relpaths": [
+          "scenarios/T0466/environment/test_demand.xlsx",
+          "scenarios/T0467/environment/test-supply.xlsx",
+          "scenarios/T0469/environment/gdp.xlsx",
+          "scenarios/T0471/environment/data.xlsx",
+          "scenarios/T0473/environment/test-rar.xlsx"
+        ]
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "environment.sanitized_ooxml_input",
+        "destination": "environments/{task_id}/{relpath}",
+        "materialize": false,
+        "transform": "strip_ooxml_abs_path"
+      }
+    },
+    {
+      "id": "private_T0453_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0453",
+        "relpaths": [
+          "catalog.csv",
+          "demo/**",
+          "results.csv",
+          "test_utils.py"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0455_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0455",
+        "relpaths": "expected_results.csv"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0460_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0460",
+        "relpaths": [
+          "evaluate_picks.py",
+          "labels.csv",
+          "results.csv"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0461_workspace",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0461",
+        "relpaths": "workspace/**"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0462_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0462",
+        "relpaths": "expected_frontier.csv"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0463_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0463",
+        "relpaths": "expected_values.json"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0465_workspace",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0465",
+        "relpaths": "workspace/**"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0472_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0472",
+        "relpaths": "expected_output.json"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0477_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0477",
+        "relpaths": [
+          "verification_params.json",
+          "data/verification_params.json",
+          "environment/verification_params.json"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.gold",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0479_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0479",
+        "relpaths": [
+          "acc_report.md",
+          "acc_system.py",
+          "pid_controller.py",
+          "simulation.py",
+          "simulation_results.csv",
+          "tuning_results.yaml"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0480_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0480",
+        "relpaths": "solve_task.py"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.reference_helper",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0481_legacy_output",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0481",
+        "relpaths": "output/**"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0482_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0482",
+        "relpaths": "stat_oracle.xlsx"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0485_groundtruth",
+      "priority": 700,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0485",
+        "relpaths": [
+          "data/groundtruth/**",
+          "environment/groundtruth/**"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.gold",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0485_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0485",
+        "relpaths": "nasa_budget_recovered.xlsx"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0486_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0486",
+        "relpaths": "latex_formula_extraction.md"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0487_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0487",
+        "relpaths": "expected.json"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0490_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0490",
+        "relpaths": [
+          "darp_validation.py",
+          "reference_oracle.py"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.reference_helper",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0493_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0493",
+        "relpaths": [
+          "oracle_metrics.json",
+          "output/**"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.judge_or_output_artifact",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0494_solver_helpers",
+      "priority": 700,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0494",
+        "relpaths": [
+          "data/solve.py",
+          "environment/solve.py"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "reference.helper",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0494_validator_helpers",
+      "priority": 700,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0494",
+        "relpaths": [
+          "data/validate.py",
+          "environment/validate.py"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "judge.evaluator_helper",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0494_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0494",
+        "relpaths": [
+          "task01.pkl",
+          "task01.txt",
+          "task02.pkl",
+          "task02.txt"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.pre_generated_output",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "private_T0495_legacy_artifacts",
+      "priority": 600,
+      "match": {
+        "scope": "scenario",
+        "official": true,
+        "task_ids": "T0495",
+        "relpaths": [
+          "_oracle_sim.py",
+          "attitude_controller.py",
+          "attitude_planner.py",
+          "dynamics.py",
+          "flight_plan_parser.py",
+          "main.py",
+          "motor_model.py",
+          "plot_quadrotor.py",
+          "position_controller.py",
+          "stepinfo_3d.py",
+          "trajectory_planner.py"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "legacy.reference_helper",
+        "destination": "scenarios/{task_id}/{relpath}"
+      }
+    },
+    {
+      "id": "public_gemini_gene_contexts",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "gene_gemini31pro",
+        "official": true
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "context.gene_gemini31pro",
+        "destination": "contexts/gene_gemini31pro/{name}",
+        "materialize": false,
+        "transform": "sanitize_gene_provenance"
+      }
+    },
+    {
+      "id": "public_opus_gene_contexts",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "gene_opus48",
+        "official": true
+      },
+      "classification": {
+        "distribution": "public",
+        "role": "context.gene_opus48",
+        "destination": "contexts/gene_opus48/{name}",
+        "materialize": false,
+        "transform": "sanitize_gene_provenance"
+      }
+    },
+    {
+      "id": "private_agent_skill_contexts",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "public_agent_skill",
+        "official": true
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.alternate_agent_skill_context",
+        "destination": "provenance/{collection}/{name}"
+      }
+    },
+    {
+      "id": "private_rewritten_skill_contexts",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "rewritten_skill",
+        "official": true
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.alternate_rewritten_skill_context",
+        "destination": "provenance/{collection}/{name}"
+      }
+    },
+    {
+      "id": "private_gene_generation_logs",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collections": [
+          "gene_gemini31pro",
+          "gene_opus48"
+        ],
+        "has_task_id": false,
+        "relpaths": "_evolve_log.jsonl"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.gene_generation_log",
+        "destination": "provenance/{collection}/{relpath}",
+        "materialize": false
+      }
+    },
+    {
+      "id": "private_opus_evolution_traces",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "gene_opus48",
+        "has_task_id": false,
+        "relpaths": "_traces/**"
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.evolution_trace",
+        "destination": "provenance/{collection}/{relpath}",
+        "materialize": false
+      }
+    },
+    {
+      "id": "private_agent_skill_provenance",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "public_agent_skill",
+        "has_task_id": false,
+        "relpaths": [
+          "manifest_agent_skill.json",
+          "selected_ids.json",
+          "_agent_skill_metadata.json",
+          "_agent_skill_log.jsonl"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.agent_skill_generation",
+        "destination": "provenance/{collection}/{relpath}",
+        "materialize": false
+      }
+    },
+    {
+      "id": "private_rewritten_skill_provenance",
+      "priority": 400,
+      "match": {
+        "scope": "collection",
+        "collection": "rewritten_skill",
+        "has_task_id": false,
+        "relpaths": [
+          "selected_ids_common778.json",
+          "selected_ids.json",
+          "manifest_gene_skill_common_genes_opus48.json",
+          "manifest_rewritten_skill.json",
+          "ids_common778.txt",
+          "manifest_gene_skill_common_genes_gemini31pro.json",
+          "_rewrite_log.jsonl"
+        ]
+      },
+      "classification": {
+        "distribution": "private",
+        "role": "provenance.rewritten_skill_generation",
+        "destination": "provenance/{collection}/{relpath}",
+        "materialize": false
+      }
+    }
+  ]
+}

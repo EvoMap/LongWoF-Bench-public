@@ -1,0 +1,388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/stage-c-release.schema.json",
+  "title": "TaskGenome Bench Stage C release policy",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "project",
+    "versions",
+    "licenses",
+    "evaluation",
+    "per_task_metrics",
+    "public_data",
+    "private_package",
+    "clean_history",
+    "code_export"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.stage-c-release.v1"
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "name",
+        "repository_slug",
+        "code_repository_url"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository_slug": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$"
+        },
+        "code_repository_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "versions": {
+      "type": "object",
+      "required": [
+        "code",
+        "public_data",
+        "private_assets"
+      ],
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+      }
+    },
+    "licenses": {
+      "type": "object"
+    },
+    "evaluation": {
+      "type": "object"
+    },
+    "per_task_metrics": {
+      "type": "object",
+      "required": [
+        "publish",
+        "artifact",
+        "allowed_fields",
+        "forbidden_fields"
+      ],
+      "properties": {
+        "publish": {
+          "const": true
+        },
+        "artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowed_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "forbidden_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "public_data": {
+      "type": "object",
+      "required": [
+        "artifact_basename",
+        "archive_format",
+        "release_id",
+        "expected_asset_count",
+        "expected_unpacked_asset_bytes",
+        "integrity",
+        "authentication",
+        "archive"
+      ],
+      "properties": {
+        "artifact_basename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archive_format": {
+          "const": "tar.gz"
+        },
+        "release_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{24}$"
+        },
+        "expected_asset_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expected_unpacked_asset_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "integrity": {
+          "const": "SHA-256"
+        },
+        "authentication": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archive": {
+          "type": "object"
+        },
+        "publication": {
+          "type": "object",
+          "required": [
+            "status",
+            "github_release"
+          ],
+          "properties": {
+            "status": {
+              "description": "pending_publication: no bytes uploaded. uploaded_pending_public_visibility: assets exist on the release but the repository is not public, so anonymous download does not work yet. published: anonymously downloadable.",
+              "enum": [
+                "pending_publication",
+                "uploaded_pending_public_visibility",
+                "published"
+              ]
+            },
+            "github_release": {
+              "type": "object",
+              "required": [
+                "repository",
+                "tag",
+                "release_url"
+              ],
+              "properties": {
+                "repository": {
+                  "type": "string",
+                  "pattern": "^[^/]+/[^/]+$"
+                },
+                "tag": {
+                  "type": "string",
+                  "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+                },
+                "release_url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "additionalProperties": false
+            },
+            "zenodo": {
+              "type": "object",
+              "required": [
+                "version_doi",
+                "concept_doi",
+                "archive_url"
+              ],
+              "properties": {
+                "version_doi": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^https://doi\\.org/10\\.[0-9]+/[^\\s]+$"
+                },
+                "concept_doi": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^https://doi\\.org/10\\.[0-9]+/[^\\s]+$"
+                },
+                "archive_url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                }
+              },
+              "additionalProperties": false,
+              "description": "Optional. Omit the key entirely when Zenodo is not a channel for this release; null members mean a declared channel whose record has not been minted yet."
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "private_package": {
+      "type": "object"
+    },
+    "clean_history": {
+      "type": "object",
+      "required": [
+        "method",
+        "forbidden_methods",
+        "branch",
+        "tag",
+        "commit_identity",
+        "commit_date",
+        "initial_commit_message",
+        "forbidden_history_path_regexes",
+        "forbidden_history_content_regexes"
+      ],
+      "properties": {
+        "method": {
+          "const": "fresh whitelist export followed by git init"
+        },
+        "forbidden_methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "branch": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._/-]+$"
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._/-]+$"
+        },
+        "commit_identity": {
+          "type": "object",
+          "required": [
+            "author_name",
+            "author_email"
+          ],
+          "properties": {
+            "author_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "author_email": {
+              "type": "string",
+              "format": "email"
+            }
+          },
+          "additionalProperties": false
+        },
+        "commit_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initial_commit_message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "forbidden_history_path_regexes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "forbidden_history_content_regexes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "code_export": {
+      "type": "object",
+      "required": [
+        "forbidden_path_components",
+        "forbidden_basenames",
+        "forbidden_content_regexes",
+        "content_scan_exemptions",
+        "copy_files",
+        "copy_globs"
+      ],
+      "properties": {
+        "forbidden_path_components": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "forbidden_basenames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "forbidden_content_regexes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "copy_files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "destination"
+            ],
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "destination": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "copy_globs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "pattern",
+              "strip_prefix",
+              "destination_root"
+            ],
+            "properties": {
+              "pattern": {
+                "type": "string"
+              },
+              "strip_prefix": {
+                "type": "string"
+              },
+              "destination_root": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "content_scan_exemptions": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,367 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/quality-release.schema.json",
+  "title": "TaskGenome Bench release quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "release_id",
+    "canonical",
+    "policy_sha256",
+    "bundles",
+    "inventory",
+    "context_coverage",
+    "unclassified_assets",
+    "classification_conflicts",
+    "public_safety_violations",
+    "sensitive_hash_overlaps",
+    "errors"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed"
+      ]
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{24}$"
+    },
+    "canonical": {
+      "$ref": "#/$defs/canonical"
+    },
+    "policy_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "inventory": {
+      "$ref": "#/$defs/inventory"
+    },
+    "context_coverage": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/contextCoverage"
+      }
+    },
+    "unclassified_assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unclassifiedAsset"
+      }
+    },
+    "classification_conflicts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/classificationConflict"
+      }
+    },
+    "public_safety_violations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/errorObject"
+      }
+    },
+    "sensitive_hash_overlaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sha256",
+          "public_assets",
+          "private_assets"
+        ],
+        "properties": {
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "public_assets": {
+            "$ref": "#/$defs/assetReferences"
+          },
+          "private_assets": {
+            "$ref": "#/$defs/assetReferences"
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/errorObject"
+      }
+    },
+    "bundles": {
+      "$ref": "#/$defs/bundles"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "taskIdOrNull": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^T\\d{4}$"
+    },
+    "canonical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_sha256",
+        "ordered_task_ids_sha256",
+        "task_count",
+        "first_task_id",
+        "last_task_id"
+      ],
+      "properties": {
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordered_task_ids_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "task_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "first_task_id": {
+          "$ref": "#/$defs/taskIdOrNull"
+        },
+        "last_task_id": {
+          "$ref": "#/$defs/taskIdOrNull"
+        }
+      }
+    },
+    "distributionCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "public": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "private": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_files",
+        "classified_files",
+        "bundle_asset_records",
+        "unclassified_files",
+        "by_distribution",
+        "bytes_by_distribution",
+        "by_role",
+        "non_official_scenario_task_ids"
+      ],
+      "properties": {
+        "total_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "classified_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bundle_asset_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unclassified_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "by_distribution": {
+          "$ref": "#/$defs/distributionCounts"
+        },
+        "bytes_by_distribution": {
+          "$ref": "#/$defs/distributionCounts"
+        },
+        "by_role": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "non_official_scenario_task_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^T\\d{4}$"
+          }
+        }
+      }
+    },
+    "contextCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected",
+        "actual",
+        "missing_task_ids"
+      ],
+      "properties": {
+        "expected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "actual": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_task_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^T\\d{4}$"
+          }
+        }
+      }
+    },
+    "unclassifiedAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_relpath",
+        "task_id",
+        "scope"
+      ],
+      "properties": {
+        "source_relpath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "$ref": "#/$defs/taskIdOrNull"
+        },
+        "scope": {
+          "enum": [
+            "canonical",
+            "scenario",
+            "collection"
+          ]
+        }
+      }
+    },
+    "classificationConflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_relpath",
+        "priority",
+        "rule_ids"
+      ],
+      "properties": {
+        "source_relpath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "rule_ids": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "errorObject": {
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "assetReferences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_relpath",
+          "role"
+        ],
+        "properties": {
+          "source_relpath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "bundleSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_count",
+        "asset_merkle_root"
+      ],
+      "properties": {
+        "asset_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "asset_merkle_root": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "bundles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public",
+        "private"
+      ],
+      "properties": {
+        "public": {
+          "$ref": "#/$defs/bundleSummary"
+        },
+        "private": {
+          "$ref": "#/$defs/bundleSummary"
+        }
+      }
+    }
+  }
+}

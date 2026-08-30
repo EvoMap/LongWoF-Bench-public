@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+_runs/
+*.sigstore.json
+*.tar.gz
+
+# Task-synthesis output. These directories hold generated reference solutions,
+# gold answers, and oracles: private material that must never be committed or
+# published. tools/stage_c_release.py verify-code rejects them as well.
+synth/candidates/
+synth/candidates_sf/
+synth/_traces/
+tasks_final/

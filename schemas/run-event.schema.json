@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/run-event.schema.json",
+  "title": "TaskGenome Bench run event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "timestamp",
+    "event",
+    "runtime_protocol",
+    "run_fingerprint",
+    "credential_sources",
+    "dry_run"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.run-event.v1"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "event": {
+      "enum": [
+        "created",
+        "resumed"
+      ]
+    },
+    "runtime_protocol": {
+      "enum": [
+        "legacy-v1",
+        "hardened-v2"
+      ]
+    },
+    "run_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "credential_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(?:cli|unset|env:[A-Z0-9_]+)$"
+      }
+    },
+    "dry_run": {
+      "type": "boolean"
+    },
+    "unsafe_legacy_config_resume": {
+      "type": "boolean"
+    }
+  }
+}

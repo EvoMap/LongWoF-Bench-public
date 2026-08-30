@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/asset-policy-release.schema.json",
+  "title": "TaskGenome Bench release asset policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sources",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "policy_name": {
+      "type": "string"
+    },
+    "expected_task_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expected_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "expected_ordered_task_ids_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "expected_public_contexts": {
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scenario_root": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "scan_non_official_scenarios": {
+          "type": "boolean"
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "path",
+              "task_file_regex"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "$ref": "#/$defs/relativePath"
+              },
+              "task_file_regex": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "public_safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_text_scan_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "forbidden_asset_patterns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "forbidden_content_regexes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^(?:/|.*(?:^|/)\\.\\.(?:/|$))"
+      }
+    },
+    "stringOrArray": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      ]
+    },
+    "scopeOrArray": {
+      "oneOf": [
+        {
+          "enum": [
+            "canonical",
+            "scenario",
+            "collection"
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "canonical",
+              "scenario",
+              "collection"
+            ]
+          }
+        }
+      ]
+    },
+    "match": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scopeOrArray"
+        },
+        "collection": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "collections": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "family": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "families": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "execution_mode": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "execution_modes": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "task_id": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "task_ids": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "official": {
+          "type": "boolean"
+        },
+        "has_task_id": {
+          "type": "boolean"
+        },
+        "relpaths": {
+          "$ref": "#/$defs/stringOrArray"
+        },
+        "source_relpaths": {
+          "$ref": "#/$defs/stringOrArray"
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "distribution"
+            ],
+            "properties": {
+              "distribution": {
+                "enum": [
+                  "public",
+                  "private"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "destination"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "transform"
+            ]
+          },
+          "then": {
+            "required": [
+              "materialize"
+            ],
+            "properties": {
+              "distribution": {
+                "const": "public"
+              },
+              "materialize": {
+                "const": false
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "distribution",
+        "role"
+      ],
+      "properties": {
+        "distribution": {
+          "enum": [
+            "public",
+            "private",
+            "excluded"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "destination": {
+          "type": "string",
+          "minLength": 1
+        },
+        "materialize": {
+          "type": "boolean"
+        },
+        "transform": {
+          "enum": [
+            "strip_ooxml_abs_path",
+            "sanitize_gene_provenance"
+          ]
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "required": [
+                  "transform"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "match": {
+                "required": [
+                  "scope",
+                  "official"
+                ],
+                "properties": {
+                  "scope": {
+                    "oneOf": [
+                      {
+                        "enum": [
+                          "scenario",
+                          "collection"
+                        ]
+                      },
+                      {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 1,
+                        "items": {
+                          "enum": [
+                            "scenario",
+                            "collection"
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "official": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "id",
+        "priority",
+        "match",
+        "classification"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "match": {
+          "$ref": "#/$defs/match"
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        }
+      }
+    }
+  }
+}

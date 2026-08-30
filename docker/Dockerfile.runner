@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1.7
+#
+# BASE_IMAGE is deliberately required. Pass a Miniconda-compatible image by
+# immutable registry digest; do not replace it with a floating tag in a
+# published protocol.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+COPY environment.yml /tmp/taskgenome-environment.yml
+RUN conda env create --file /tmp/taskgenome-environment.yml \
+    && conda clean --all --yes \
+    && rm /tmp/taskgenome-environment.yml \
+    && chmod -R a+rX /opt/conda/envs/gene_bench
+
+ENV PATH="/opt/conda/envs/gene_bench/bin:${PATH}" \
+    PYTHONDONTWRITEBYTECODE="1" \
+    PYTHONHASHSEED="0"
+
+RUN python -B -c "import pytest; print(pytest.__version__)"
+
+ENTRYPOINT []
+CMD ["python", "--version"]
+WORKDIR /workspace

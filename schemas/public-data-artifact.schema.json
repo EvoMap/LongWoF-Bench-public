@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/public-data-artifact.schema.json",
+  "title": "TaskGenome Bench public data archive record",
+  "$comment": "The outer release/public_data_artifact.v1.json record includes publication metadata; embedded ARTIFACT.json records from older deterministic archives may omit that distribution-only object.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project",
+    "version",
+    "release_id",
+    "license",
+    "asset_count",
+    "asset_bytes",
+    "asset_merkle_root",
+    "public_release_manifest_sha256",
+    "archive_root",
+    "archive",
+    "archive_sha256",
+    "archive_bytes",
+    "sha256_sidecar",
+    "sigstore_bundle"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.public-data-artifact.v1"
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{24}$"
+    },
+    "license": {
+      "const": "CC-BY-4.0"
+    },
+    "asset_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "asset_bytes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "asset_merkle_root": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "public_release_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "archive_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "archive": {
+      "type": "string",
+      "pattern": "\\.tar\\.gz$"
+    },
+    "archive_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "archive_bytes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sha256_sidecar": {
+      "type": "string",
+      "pattern": "\\.sha256$"
+    },
+    "sigstore_bundle": {
+      "type": "string",
+      "pattern": "\\.sigstore\\.json$"
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "status",
+        "anonymous_download",
+        "version",
+        "github_release"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending_publication",
+            "uploaded_pending_public_visibility",
+            "published"
+          ],
+          "description": "pending_publication: no bytes uploaded. uploaded_pending_public_visibility: assets exist on the release but the repository is not public. published: anonymously downloadable."
+        },
+        "anonymous_download": {
+          "type": "boolean"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "github_release": {
+          "type": "object",
+          "required": [
+            "repository",
+            "tag",
+            "release_url",
+            "archive_url",
+            "sha256_url",
+            "sigstore_bundle_url"
+          ],
+          "properties": {
+            "repository": {
+              "type": "string",
+              "pattern": "^[^/]+/[^/]+$"
+            },
+            "tag": {
+              "type": "string",
+              "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+            },
+            "release_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "archive_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "sha256_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "sigstore_bundle_url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "additionalProperties": false
+        },
+        "zenodo": {
+          "type": "object",
+          "required": [
+            "version_doi",
+            "concept_doi",
+            "archive_url"
+          ],
+          "properties": {
+            "version_doi": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^https://doi\\.org/10\\.[0-9]+/[^\\s]+$"
+            },
+            "concept_doi": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^https://doi\\.org/10\\.[0-9]+/[^\\s]+$"
+            },
+            "archive_url": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Optional. Omit the key entirely when Zenodo is not a channel for this release."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

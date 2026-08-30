@@ -1,0 +1,71 @@
+name: Sign release archive
+
+# Signs the published data archive with a Sigstore keyless signature. The
+# signing identity is this workflow, not a person: the certificate records
+# the workflow path and ref, and that certificate is published to the public
+# Rekor transparency log. Signing from a laptop would publish the operator's
+# email address there instead, permanently.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag carrying the archive
+        required: true
+        default: v1.0.1
+      archive:
+        description: Archive basename
+        required: true
+        default: taskgenome-bench-public-data-v1.0.1.tar.gz
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+        with:
+          cosign-release: v3.1.3
+
+      - name: Download the archive and its checksum
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "${{ inputs.tag }}" --repo "${{ github.repository }}" \
+            --pattern "${{ inputs.archive }}" --pattern "${{ inputs.archive }}.sha256"
+
+      # Never sign bytes that were not checked first: a signature over a
+      # corrupted download would be valid and wrong.
+      - name: Verify the checksum before signing
+        run: sha256sum --check "${{ inputs.archive }}.sha256"
+
+      - name: Sign
+        run: |
+          cosign sign-blob --yes \
+            --bundle "${{ inputs.archive }}.sigstore.json" \
+            "${{ inputs.archive }}"
+
+      # Prove the bundle verifies before it is published, and pin the identity
+      # to this repository's workflows so a bundle signed elsewhere fails here.
+      - name: Verify the bundle
+        run: |
+          cosign verify-blob \
+            --bundle "${{ inputs.archive }}.sigstore.json" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            --certificate-identity-regexp "^https://github\.com/${{ github.repository }}/\.github/workflows/sign-release\.yml@" \
+            "${{ inputs.archive }}"
+
+      - name: Attach the bundle to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ inputs.tag }}" --repo "${{ github.repository }}" \
+            --clobber "${{ inputs.archive }}.sigstore.json"
+
+      - name: Report the signing identity
+        run: |
+          echo "Signed ${{ inputs.archive }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "identity: https://github.com/${{ github.repository }}/.github/workflows/sign-release.yml@${{ github.ref }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "issuer:   https://token.actions.githubusercontent.com" >> "$GITHUB_STEP_SUMMARY"

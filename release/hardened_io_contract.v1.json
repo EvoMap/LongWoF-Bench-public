@@ -1,0 +1,335 @@
+{
+  "schema_version": "taskgenome.hardened-io-contract.v1",
+  "expected_manifest_sha256": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d",
+  "execution_mode": "subprocess_ref_runner",
+  "limits": {
+    "max_files": 32,
+    "max_file_bytes": 67108864,
+    "max_total_bytes": 134217728
+  },
+  "tasks": {
+    "T0452": {
+      "supported": false,
+      "reason": "public-only reference replay requires external network access and timed out",
+      "outputs": []
+    },
+    "T0453": {
+      "supported": false,
+      "reason": "reference replay failed and public/reference/judge output paths disagree",
+      "outputs": []
+    },
+    "T0454": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "answer.json",
+          "judge_path": "answer.json",
+          "required": true
+        }
+      ]
+    },
+    "T0455": {
+      "supported": false,
+      "reason": "trusted reference depends on a missing private runtime helper",
+      "outputs": []
+    },
+    "T0456": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "output/trend_result.csv",
+          "judge_path": "output/trend_result.csv",
+          "required": true
+        },
+        {
+          "generation_path": "output/dominant_factor.csv",
+          "judge_path": "output/dominant_factor.csv",
+          "required": true
+        }
+      ]
+    },
+    "T0457": {
+      "supported": false,
+      "reason": "judge executes candidate-controlled input through an external program",
+      "outputs": []
+    },
+    "T0458": {
+      "supported": false,
+      "reason": "public-only trusted reference replay failed",
+      "outputs": []
+    },
+    "T0459": {
+      "supported": false,
+      "reason": "trusted reference dependency is unavailable in the pinned runtime",
+      "outputs": []
+    },
+    "T0460": {
+      "supported": false,
+      "reason": "public task, trusted reference, and judge output paths disagree",
+      "outputs": []
+    },
+    "T0461": {
+      "supported": false,
+      "reason": "judge imports candidate Python code",
+      "outputs": []
+    },
+    "T0462": {
+      "supported": false,
+      "reason": "trusted reference depends on a missing private runtime helper",
+      "outputs": []
+    },
+    "T0463": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "output/results.csv",
+          "judge_path": "output/results.csv",
+          "required": true
+        }
+      ]
+    },
+    "T0464": {
+      "supported": false,
+      "reason": "in-place workbook path is ambiguous between flattened and data views",
+      "outputs": []
+    },
+    "T0465": {
+      "supported": false,
+      "reason": "judge imports candidate Python code",
+      "outputs": []
+    },
+    "T0466": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0467": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0468": {
+      "supported": false,
+      "reason": "public task, trusted reference, and judge output paths disagree",
+      "outputs": []
+    },
+    "T0469": {
+      "supported": false,
+      "reason": "in-place workbook path is ambiguous between flattened and data views",
+      "outputs": []
+    },
+    "T0470": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "answer.txt",
+          "judge_path": "answer.txt",
+          "required": true
+        }
+      ]
+    },
+    "T0471": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0472": {
+      "supported": false,
+      "reason": "trusted reference requires network access and produces dynamic outputs",
+      "outputs": []
+    },
+    "T0473": {
+      "supported": false,
+      "reason": "public-only trusted reference replay failed",
+      "outputs": []
+    },
+    "T0474": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0475": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0476": {
+      "supported": false,
+      "reason": "public task, trusted reference, and judge output paths disagree",
+      "outputs": []
+    },
+    "T0477": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "calibration_log.json",
+          "judge_path": "calibration_log.json",
+          "required": true
+        },
+        {
+          "generation_path": "estimated_params.json",
+          "judge_path": "estimated_params.json",
+          "required": true
+        },
+        {
+          "generation_path": "tuned_gains.json",
+          "judge_path": "tuned_gains.json",
+          "required": true
+        },
+        {
+          "generation_path": "control_log.json",
+          "judge_path": "control_log.json",
+          "required": true
+        },
+        {
+          "generation_path": "metrics.json",
+          "judge_path": "metrics.json",
+          "required": true
+        }
+      ]
+    },
+    "T0478": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0479": {
+      "supported": false,
+      "reason": "judge imports and executes candidate Python code",
+      "outputs": []
+    },
+    "T0480": {
+      "supported": false,
+      "reason": "candidate contract includes executable Python output and a path mismatch",
+      "outputs": []
+    },
+    "T0481": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "output/output.pdf",
+          "judge_path": "output/output.pdf",
+          "required": true
+        }
+      ]
+    },
+    "T0482": {
+      "supported": false,
+      "reason": "candidate contract includes executable Python output",
+      "outputs": []
+    },
+    "T0483": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0484": {
+      "supported": false,
+      "reason": "trusted reference requires unavailable private tooling and paths disagree",
+      "outputs": []
+    },
+    "T0485": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "nasa_budget_recovered.xlsx",
+          "judge_path": "nasa_budget_recovered.xlsx",
+          "required": true
+        }
+      ]
+    },
+    "T0486": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0487": {
+      "supported": false,
+      "reason": "trusted reference requires GitHub CLI and network access",
+      "outputs": []
+    },
+    "T0488": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0489": {
+      "supported": false,
+      "reason": "judge imports candidate Python code",
+      "outputs": []
+    },
+    "T0490": {
+      "supported": false,
+      "reason": "public task, trusted reference, and judge output paths disagree",
+      "outputs": []
+    },
+    "T0491": {
+      "supported": false,
+      "reason": "trusted reference replay exceeded the bounded runtime",
+      "outputs": []
+    },
+    "T0492": {
+      "supported": true,
+      "reason": "",
+      "outputs": [
+        {
+          "generation_path": "output/solution.json",
+          "judge_path": "output/solution.json",
+          "required": true
+        },
+        {
+          "generation_path": "output/schedule.csv",
+          "judge_path": "output/schedule.csv",
+          "required": true
+        },
+        {
+          "generation_path": "output/report.json",
+          "judge_path": "output/report.json",
+          "required": false
+        },
+        {
+          "generation_path": "output/report.md",
+          "judge_path": "output/report.md",
+          "required": false
+        }
+      ]
+    },
+    "T0493": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0494": {
+      "supported": false,
+      "reason": "judge unpickles candidate-controlled files",
+      "outputs": []
+    },
+    "T0495": {
+      "supported": false,
+      "reason": "large serialized-output contract is not reviewed for safe deserialization",
+      "outputs": []
+    },
+    "T0496": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0497": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    },
+    "T0498": {
+      "supported": false,
+      "reason": "public-only reference-to-judge replay is not yet verified",
+      "outputs": []
+    }
+  }
+}

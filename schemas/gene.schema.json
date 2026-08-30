@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/gene.schema.json",
+  "title": "TaskGenome Bench GDIv2 Gene asset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "asset_id",
+    "asset_type",
+    "schema_version",
+    "source_node_id",
+    "source_node_alias",
+    "author",
+    "created_at",
+    "domain",
+    "short_title",
+    "model_name",
+    "simulation",
+    "simulation_note",
+    "generation_source",
+    "pipeline_mode",
+    "local_id",
+    "source_track",
+    "payload",
+    "reads_reference",
+    "evolve"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "asset_type": {
+      "const": "Gene"
+    },
+    "schema_version": {
+      "const": "1.5.0"
+    },
+    "source_node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_node_alias": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domain": {
+      "enum": [
+        "agent_env_synth",
+        "code_generation",
+        "math_reasoning",
+        "rule_following"
+      ]
+    },
+    "short_title": {
+      "type": "string",
+      "pattern": "^T\\d{4}$"
+    },
+    "model_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation": {
+      "type": "boolean"
+    },
+    "simulation_note": {
+      "type": "string"
+    },
+    "generation_source": {
+      "enum": [
+        "evolved",
+        "reference_distilled",
+        "skill_distilled"
+      ]
+    },
+    "pipeline_mode": {
+      "const": "evolved_v3"
+    },
+    "local_id": {
+      "type": "string",
+      "pattern": "^gene_T\\d{4}$"
+    },
+    "source_track": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "$ref": "#/$defs/payload"
+    },
+    "reads_reference": {
+      "type": "boolean"
+    },
+    "evolve": {
+      "$ref": "#/$defs/evolve"
+    }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "summary",
+        "category",
+        "signals_match",
+        "strategy",
+        "preconditions",
+        "constraints",
+        "validation"
+      ],
+      "properties": {
+        "type": {
+          "const": "Gene"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signals_match": {
+          "$ref": "#/$defs/stringList"
+        },
+        "strategy": {
+          "$ref": "#/$defs/stringList"
+        },
+        "preconditions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_files",
+            "forbidden_paths"
+          ],
+          "properties": {
+            "max_files": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "forbidden_paths": {
+              "$ref": "#/$defs/stringList"
+            }
+          }
+        },
+        "validation": {
+          "type": "array"
+        }
+      }
+    },
+    "evolve": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "solved",
+        "n_iters",
+        "success_rate",
+        "mutation_log"
+      ],
+      "properties": {
+        "source": {
+          "enum": [
+            "evolved",
+            "reference_distilled",
+            "skill_distilled"
+          ]
+        },
+        "solved": {
+          "type": "boolean"
+        },
+        "n_iters": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "success_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "mutation_log": {
+          "$ref": "#/$defs/stringList"
+        },
+        "calls": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "trace_file": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

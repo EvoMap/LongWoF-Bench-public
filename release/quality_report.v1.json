@@ -1,0 +1,131 @@
+{
+  "bundles": {
+    "private": {
+      "asset_count": 13240,
+      "asset_merkle_root": "fdbb5c9a475c8983e0969d7652d471fa226b62f4ecbb45fc4974548f01d9d3f8"
+    },
+    "public": {
+      "asset_count": 4420,
+      "asset_merkle_root": "35b93ebd4e50047602b43cf2da663c6ce0e853ef8b0234100e259d241acdf8cc"
+    }
+  },
+  "canonical": {
+    "first_task_id": "T0001",
+    "last_task_id": "T0808",
+    "manifest_sha256": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d",
+    "ordered_task_ids_sha256": "ebaae7f2252334ebccdead74b6c77f9653c615cd221a28b33821929b1619bcde",
+    "task_count": 778
+  },
+  "classification_conflicts": [],
+  "context_coverage": {
+    "context.gene_gemini31pro": {
+      "actual": 778,
+      "expected": 778,
+      "missing_task_ids": []
+    },
+    "context.gene_opus48": {
+      "actual": 778,
+      "expected": 778,
+      "missing_task_ids": []
+    },
+    "context.legacy_skill": {
+      "actual": 778,
+      "expected": 778,
+      "missing_task_ids": []
+    }
+  },
+  "errors": [],
+  "inventory": {
+    "bundle_asset_records": 18137,
+    "by_distribution": {
+      "excluded": 477,
+      "private": 13240,
+      "public": 4420
+    },
+    "by_role": {
+      "excluded:excluded.non_official_task": 292,
+      "excluded:excluded.third_party.restricted_skill": 185,
+      "private:authoring.oracle_runtime_copy": 115,
+      "private:authoring.oracle_skill": 778,
+      "private:authoring.scenario": 720,
+      "private:canonical.legacy_compatibility_policy": 1,
+      "private:canonical.manifest": 1,
+      "private:judge.evaluator": 778,
+      "private:judge.evaluator_helper": 2,
+      "private:judge.fixture": 2550,
+      "private:judge.gold": 2803,
+      "private:legacy.judge_or_output_artifact": 15,
+      "private:legacy.pre_generated_output": 14,
+      "private:legacy.reference_helper": 14,
+      "private:privacy.host_path_metadata": 1566,
+      "private:provenance.agent_skill_generation": 4,
+      "private:provenance.alternate_agent_skill_context": 778,
+      "private:provenance.alternate_rewritten_skill_context": 778,
+      "private:provenance.evolution_trace": 778,
+      "private:provenance.gene_generation_log": 2,
+      "private:provenance.rewritten_skill_generation": 7,
+      "private:provenance.task": 746,
+      "private:quality.historical_selftest_report": 1,
+      "private:reference.helper": 2,
+      "private:reference.solution": 787,
+      "public:context.gene_gemini31pro": 778,
+      "public:context.gene_opus48": 778,
+      "public:context.legacy_skill": 778,
+      "public:environment.definition": 416,
+      "public:environment.sanitized_ooxml_input": 5,
+      "public:metadata.task": 47,
+      "public:prompt.task": 778,
+      "public:runtime.library": 364,
+      "public:runtime.public_input": 371,
+      "public:runtime.sanitized_ooxml_input": 5,
+      "public:runtime.skill_package": 100
+    },
+    "bytes_by_distribution": {
+      "excluded": 3908019,
+      "private": 89137516,
+      "public": 574031496
+    },
+    "classified_files": 16571,
+    "non_official_scenario_task_ids": [
+      "T0408",
+      "T0410",
+      "T0411",
+      "T0412",
+      "T0413",
+      "T0414",
+      "T0415",
+      "T0416",
+      "T0417",
+      "T0418",
+      "T0419",
+      "T0421",
+      "T0422",
+      "T0423",
+      "T0424",
+      "T0425",
+      "T0426",
+      "T0427",
+      "T0428",
+      "T0429",
+      "T0430",
+      "T0431",
+      "T0432",
+      "T0434",
+      "T0435",
+      "T0436",
+      "T0442",
+      "T0443",
+      "T0444",
+      "T0445"
+    ],
+    "total_files": 16571,
+    "unclassified_files": 0
+  },
+  "policy_sha256": "f8616db30e0240e3ebfe7fb5804bc22509a99f4180f32377e448079ca34447f3",
+  "public_safety_violations": [],
+  "release_id": "aebd799c580e4985ca590409",
+  "schema_version": "1.0.0",
+  "sensitive_hash_overlaps": [],
+  "status": "passed",
+  "unclassified_assets": []
+}

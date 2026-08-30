@@ -1,0 +1,32 @@
+# Core dependencies for LongWoF-Bench
+# Install with: pip install -r requirements.txt
+
+# LLM & API clients
+anthropic>=0.46.0
+openai>=2.41.0
+httpx>=0.28.0
+google-generativeai>=0.8.6
+google-ai-generativelanguage>=0.6.15
+boto3>=1.43.0
+
+# Data processing & ML
+numpy>=2.2.0
+pandas>=2.3.0
+scikit-learn>=1.7.0
+scipy>=1.13.0
+polars>=1.40.0
+matplotlib>=3.10.0
+
+# Utilities
+requests>=2.34.0
+pydantic>=2.13.0
+pyyaml>=6.0.0
+tqdm>=4.67.0
+click>=8.4.0
+typer>=0.25.0
+rich>=15.0.0
+
+# Testing & Development
+pytest>=9.0.0
+jsonschema>=4.23.0
+python-dotenv>=1.2.0

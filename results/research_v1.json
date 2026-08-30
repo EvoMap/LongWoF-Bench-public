@@ -1,0 +1,184 @@
+{
+  "schema_version": "taskgenome.research-freeze.v1",
+  "research_version": "research-v1",
+  "release_id": "73d08c560817d745c8415927",
+  "manifest_sha256": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d",
+  "historical_protocol_source": {
+    "git_commit": "df31c643d3a8b21bf6b51aa3930fd6c20189d3dc",
+    "run_official_sha256": "caeba49f0d3707f6e5341642bcab5e7b80acf7cfbec3eb2f5a7eec8d21e816bc",
+    "api_sha256": "926f7f69a1fa1274b892dddcb5e06257c211f7869f6f87ee1e9819f34205ce3d",
+    "manifest_sha256": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d"
+  },
+  "asset_sets": {
+    "manifest": {
+      "file_count": 1,
+      "sha256": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d"
+    },
+    "skill": {
+      "algorithm": "sha256(relative_path NUL file_sha256 LF)",
+      "file_count": 778,
+      "sha256": "56cdc55579a77eaf315189edc69079bc16db7da3c225e97d2072a2ee52b637e0"
+    },
+    "opus_gene": {
+      "algorithm": "sha256(relative_path NUL file_sha256 LF)",
+      "file_count": 778,
+      "sha256": "edf8f37cb7db6d3dbdb629f53d1603b3814636144cd2498a27db37ccbe4e9f8a"
+    },
+    "gemini_gene": {
+      "algorithm": "sha256(relative_path NUL file_sha256 LF)",
+      "file_count": 778,
+      "sha256": "506b6eac3f607319d0eadd8fe94e7be55f53f37a2635a0e98d6747276c536bdd"
+    }
+  },
+  "report_experiment_ids": [
+    "research-v1:bedrock_opus48:full778",
+    "research-v1:bedrock_sonnet46:full778",
+    "research-v1:gemini_flash:full778",
+    "research-v1:gemini_pro:full778",
+    "research-v1:minimax_m3:full778",
+    "research-v1:sf_qwen_coder30b:full778",
+    "research-v1:sf_qwen_moe:full778"
+  ],
+  "protected_logic_files_at_freeze": {
+    "eval/run_official.py": "ebf004f6823212822549274b72e9091e33a25ded2547094db55c2af218decb43",
+    "eval/api.py": "01e49447900c712ec8c3afd1e2a8b67f3361aabead5287733176e13273a8e02f",
+    "tasks_final/manifest.json": "191587d6e35b794601c096e98133577ea497ab9e09936f6818d1b9e30a14264d"
+  },
+  "analysis_tool": {
+    "path": "tools/research_results.py",
+    "sha256": "7ebfc57e347022bff8585bc0bad2b2ff309edc5447b8e42b41288a49c889ad45"
+  },
+  "derived_artifacts": [
+    {
+      "path": "results/README.md",
+      "size": 2709,
+      "sha256": "b496b58e0a6420e48129386a147a73c805f346f1a934bd5840063dbf67171fce"
+    },
+    {
+      "path": "results/experiment_registry.json",
+      "size": 16313,
+      "sha256": "4fe4c15be3693a1ce230b25dd9943d32852e3e70b8368b593ecceeeeec66f541"
+    },
+    {
+      "path": "results/figures/evolved_results.png",
+      "size": 111134,
+      "sha256": "f661202cb0cac492f3c29c1f4259b364cfa30caf61c65a2f90313d45e4e4f602"
+    },
+    {
+      "path": "results/figures/evolved_results.svg",
+      "size": 4912,
+      "sha256": "132f88bf9503244165bd700deb763b261e93ddd675341a5fe9b2e4a8cf8fcef0"
+    },
+    {
+      "path": "results/figures/fig-3-3-opus-gene-vs-skill-by-task-type.png",
+      "size": 274679,
+      "sha256": "9e35da1227963b92904ce1a8d68af2795d5b80b599030137ac493b1386b26bf3"
+    },
+    {
+      "path": "results/figures/token_efficiency.png",
+      "size": 83139,
+      "sha256": "b2c0d8e923fde23658c7979a93eac24eea0af95363bd7cf4f57352a55b991307"
+    },
+    {
+      "path": "results/figures/token_efficiency.svg",
+      "size": 1417,
+      "sha256": "626cdf45ccc89a48140d31f9afe19ccb5eb1552bffdeb1e4cdde9fd6e49fe8ec"
+    },
+    {
+      "path": "results/gene_evolution_metrics.json",
+      "size": 1760,
+      "sha256": "edd6b7f551960aa52f37cea4244dc6453d239a1273796b9cc09dc310b5418438"
+    },
+    {
+      "path": "results/headline_results.csv",
+      "size": 17383,
+      "sha256": "546458287e2fe534a6d3850568d439dccf873d2ff9e37ac5024cccfab58c7bc1"
+    },
+    {
+      "path": "results/statistical_tests.csv",
+      "size": 6832,
+      "sha256": "27abfea5daeeb3d2b46101e460f8f917e92b9334defddf813b850d024881e5d7"
+    },
+    {
+      "path": "results/subset_definitions.json",
+      "size": 31253,
+      "sha256": "2bbf278053005b3c71760f5a8645134a3fa0001438bb212ed7285f98c72c7a1c"
+    },
+    {
+      "path": "results/tables/common180.md",
+      "size": 790,
+      "sha256": "96894938ec2de065b3dff838205b216794015f8ae57e4a46ce2209346ed7cd1e"
+    },
+    {
+      "path": "results/tables/evolution_depth.md",
+      "size": 177,
+      "sha256": "49dad30a6e8a4fa2667abb3468e856c4347ae6b5e26ebe37bce9472fdfeff9ae"
+    },
+    {
+      "path": "results/tables/evolved252.md",
+      "size": 651,
+      "sha256": "8e8ebb2e3cec2bf8bab2bdc66d9071d7c8f0075329525ab114a6f496df2e88d8"
+    },
+    {
+      "path": "results/tables/full778.md",
+      "size": 655,
+      "sha256": "af4c75e84a5cce9a3e865075f396ae80ccf4813c2517a0fe362c4926ce038e6b"
+    },
+    {
+      "path": "results/tables/reference_distilled526.md",
+      "size": 632,
+      "sha256": "bd18fa070e0ebcd77b263ecdd760b64f2ea1bead364833c286dd8392b74f0d77"
+    },
+    {
+      "path": "results/tables/statistical_tests.md",
+      "size": 566,
+      "sha256": "b40695f2c763424b0bdf15c5ef8e6f28186846ba74cac408212fb1b2a54afbf4"
+    },
+    {
+      "path": "results/tables/tech_report_tables.tex",
+      "size": 9173,
+      "sha256": "f150d919b0d452fe81218a208c7973f234478f40963fd8938660fb5d6d30c3ba"
+    },
+    {
+      "path": "results/tables/token_efficiency.md",
+      "size": 384,
+      "sha256": "f29423c9bb4655510dfe9da136379151ec3c2cece17541f49d75904fba22bb27"
+    },
+    {
+      "path": "results/tables/token_efficiency_by_track.md",
+      "size": 551,
+      "sha256": "c188b61565caf71c7c541883adf85e6802638e17de85575a73f4ce19dba4c68d"
+    },
+    {
+      "path": "results/tables/tracks_evolved252.md",
+      "size": 1858,
+      "sha256": "18abcc758b675201a1370a1fa3ad8546cf830e49040aae203cb2073f64bf23e2"
+    },
+    {
+      "path": "results/tables/tracks_full778.md",
+      "size": 2083,
+      "sha256": "7cdea8e4eb8ad0f2db78fd8db94b9495f4f4738668b492ff1eb029a9d605ed2e"
+    },
+    {
+      "path": "results/task_metrics.csv",
+      "size": 13471028,
+      "sha256": "e26a7907b1e325861e72fad798d4e03c59481d2d3edfad3f8663c6d9cda1fc76"
+    },
+    {
+      "path": "results/token_efficiency.csv",
+      "size": 697,
+      "sha256": "0a6ba769e2a7ae864755857112947cf09e04a0976ac61476b8714230a40ef43e"
+    },
+    {
+      "path": "results/token_efficiency_by_track.csv",
+      "size": 520,
+      "sha256": "fc6a230ed7c96678e7afd28400af3376f52c7b2d5894bcc8320b1eb18cb9fe21"
+    },
+    {
+      "path": "results/track_results.csv",
+      "size": 23600,
+      "sha256": "0edcd97201c2bbdd6965f4a773d2708ad388cb482133199165e3636250556f99"
+    }
+  ],
+  "known_limitations_document": "docs/RESEARCH_V1.md"
+}

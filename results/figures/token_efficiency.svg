@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="390" viewBox="0 0 1050 390">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#172033}.title{font-size:24px;font-weight:700}.small{font-size:13px}.label{font-size:15px}</style>
+<text x="36" y="36" class="title">Opus token efficiency on 252 evolved tasks</text>
+<text x="36" y="59" class="small">Input + output + thoughts; Gene distillation cost is excluded</text>
+<text x="273" y="99" text-anchor="end" class="label">Multi-round exploration</text>
+<rect x="285" y="81" width="690.0" height="28" rx="4" fill="#64748b"/>
+<text x="983.0" y="100" class="small">1,333,968 tokens · 252/252 passed</text>
+<text x="273" y="167" text-anchor="end" class="label">No context, single call</text>
+<rect x="285" y="149" width="336.9" height="28" rx="4" fill="#94a3b8"/>
+<text x="629.9" y="168" class="small">651,388 tokens · 138/252 passed</text>
+<text x="273" y="235" text-anchor="end" class="label">Skill, single call</text>
+<rect x="285" y="217" width="415.4" height="28" rx="4" fill="#3b82f6"/>
+<text x="708.4" y="236" class="small">803,099 tokens · 161/252 passed</text>
+<text x="273" y="303" text-anchor="end" class="label">Opus Gene, single call</text>
+<rect x="285" y="285" width="374.2" height="28" rx="4" fill="#f97316"/>
+<text x="667.2" y="304" class="small">723,480 tokens · 200/252 passed</text>
+</svg>

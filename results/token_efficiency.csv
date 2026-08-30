@@ -1,0 +1,5 @@
+research_version,mode,calls,tasks,passed,pass_rate_percent,total_tokens,avg_tokens_per_task,tokens_per_passed_task,cost_scope
+research-v1,opus_multi_round_exploration,404,252,252,100.0,1333968,5293.5,5293.5,solve/mutate rollout only; Gene distillation excluded
+research-v1,opus_no_context_single_call,252,252,138,54.8,651388,2584.9,4720.2,single evaluation call; upstream Skill/Gene construction excluded
+research-v1,opus_with_skill_single_call,252,252,161,63.9,803099,3186.9,4988.2,single evaluation call; upstream Skill/Gene construction excluded
+research-v1,opus_with_opus_gene_single_call,252,252,200,79.4,723480,2871.0,3617.4,single evaluation call; upstream Skill/Gene construction excluded

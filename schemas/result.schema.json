@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taskgenome-bench.local/schemas/result.schema.json",
+  "title": "TaskGenome Bench result record v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "prompt_protocol",
+    "scoring_protocol",
+    "runtime_protocol",
+    "run_fingerprint",
+    "manifest_sha256",
+    "model_id",
+    "trial",
+    "eval",
+    "tokens",
+    "cost_usd",
+    "elapsed_s"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "taskgenome.result.v2"
+    },
+    "prompt_protocol": {
+      "const": "legacy-v1"
+    },
+    "scoring_protocol": {
+      "const": "legacy-v1"
+    },
+    "runtime_protocol": {
+      "enum": [
+        "legacy-v1",
+        "hardened-v2"
+      ]
+    },
+    "run_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "user"
+      ],
+      "properties": {
+        "system": {
+          "$ref": "#/$defs/sha256"
+        },
+        "user": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "legacy_task_id",
+        "source",
+        "family",
+        "execution_mode",
+        "model",
+        "condition",
+        "trial_key"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^T[0-9]{4}$"
+        },
+        "legacy_task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "execution_mode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trial_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "eval": {
+      "type": "object",
+      "required": [
+        "mode",
+        "passed",
+        "n_pass",
+        "n_fail",
+        "n_total",
+        "pass_rate",
+        "agg_score",
+        "scores",
+        "error_type"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "n_pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "n_fail": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "n_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pass_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "agg_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "scores": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "error_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input",
+        "output",
+        "thoughts",
+        "system_chars",
+        "user_chars"
+      ],
+      "properties": {
+        "input": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "thoughts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "system_chars": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "user_chars": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_cost_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "elapsed_s": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

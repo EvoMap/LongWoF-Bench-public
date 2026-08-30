@@ -1,0 +1,103 @@
+"""Family-shared oracle for rule_following.
+
+Reads scenario.yaml from the candidate dir to learn the canonical
+`expected_answer` and `answer_space`, runs the candidate script (or, if
+called from a candidate-directory smoke run, the candidate's stdout file),
+parses the `ANSWER: <X>` line, and emits the layered PASS/FAIL/SCORE
+protocol the v3 eval driver expects.
+
+Invocation:
+    python test_script.py --candidate <path_to_candidate_script>
+
+Output protocol (one line per assertion):
+    PASS:L1:emit_format          # candidate produced an ANSWER: line
+    PASS:L2:answer_in_space      # ANSWER value is one of answer_space
+    PASS:SCORE:1.0               # candidate ANSWER == expected_answer
+or
+    FAIL:L<n>:<reason>           # any failure short-circuits later layers
+    SCORE:0.0
+"""
+from __future__ import annotations
+
+import argparse
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+import yaml
+
+ANSWER_RE = re.compile(r"^ANSWER:\s*([^\n\r]+?)\s*$", re.MULTILINE | re.IGNORECASE)
+
+
+def _unbool(x):
+    """YAML 1.1 silently casts unquoted yes/no/on/off/true/false to bool.
+    The LLM almost always writes `answer_space: [yes, no]` unquoted, so we
+    coerce booleans back to the lowercase string form."""
+    if isinstance(x, bool):
+        return "yes" if x else "no"
+    return str(x).strip()
+
+
+def main() -> int:
+    p = argparse.ArgumentParser()
+    p.add_argument("--candidate", required=True,
+                   help="Path to the candidate Python script (run with no args).")
+    p.add_argument("--scenario", default=None,
+                   help="Path to scenario.yaml (defaults to scenario.yaml next to this test_script).")
+    args = p.parse_args()
+
+    here = Path(__file__).resolve().parent
+    scenario_path = Path(args.scenario) if args.scenario else here / "scenario.yaml"
+    scen = yaml.safe_load(scenario_path.read_text(encoding="utf-8"))
+    expected = _unbool(scen.get("expected_answer", ""))
+    answer_space = [_unbool(x) for x in scen.get("answer_space", [])]
+    if not expected or not answer_space:
+        print("FAIL:L0:scenario_missing_expected_or_answer_space")
+        print("SCORE:0.0")
+        return 1
+
+    cand = Path(args.candidate).resolve()
+    if not cand.exists():
+        print(f"FAIL:L0:candidate_not_found:{cand}")
+        print("SCORE:0.0")
+        return 1
+
+    try:
+        proc = subprocess.run(
+            [sys.executable, str(cand)],
+            capture_output=True, text=True, timeout=30,
+        )
+    except subprocess.TimeoutExpired:
+        print("FAIL:L1:candidate_timeout_30s")
+        print("SCORE:0.0")
+        return 1
+
+    out = proc.stdout
+    m = ANSWER_RE.search(out)
+    if not m:
+        print(f"FAIL:L1:no_ANSWER_line; rc={proc.returncode}; "
+              f"stdout_tail={out[-200:]!r}; stderr_tail={proc.stderr[-200:]!r}")
+        print("SCORE:0.0")
+        return 1
+    print("PASS:L1:emit_format")
+
+    got = m.group(1).strip()
+    got_lower = got.lower()
+    space_lower = [a.lower() for a in answer_space]
+    if got_lower not in space_lower:
+        print(f"FAIL:L2:answer_not_in_space; got={got!r}; space={answer_space}")
+        print("SCORE:0.0")
+        return 1
+    print("PASS:L2:answer_in_space")
+
+    if got_lower == expected.strip().lower():
+        print("PASS:SCORE:1.0")
+        return 0
+    print(f"FAIL:SCORE:0.0; got={got!r}; expected={expected!r}")
+    print("SCORE:0.0")
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,113 @@
+research_version,subset,model_alias,model_display_name,condition,n,passed,pass_rate,pass_rate_percent,wilson_95_low_percent,wilson_95_high_percent,total_tokens,avg_tokens_per_task,tokens_per_passed_task,protocol,trials_per_task_condition
+research-v1,full778,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,778,157,0.201799,20.2,17.51,23.14,3194851,4106.49,20349.37,legacy-v1,1
+research-v1,full778,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,778,310,0.398458,39.9,36.46,43.33,3647130,4687.83,11764.94,legacy-v1,1
+research-v1,full778,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,778,246,0.316195,31.6,28.45,34.97,3206977,4122.08,13036.49,legacy-v1,1
+research-v1,full778,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,778,305,0.392031,39.2,35.83,42.68,3354598,4311.82,10998.68,legacy-v1,1
+research-v1,full778,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,778,129,0.165810,16.6,14.13,19.36,3799725,4883.97,29455.23,legacy-v1,1
+research-v1,full778,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,778,257,0.330334,33.0,29.82,36.41,3880317,4987.55,15098.51,legacy-v1,1
+research-v1,full778,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,778,177,0.227506,22.8,19.94,25.83,3543117,4554.13,20017.61,legacy-v1,1
+research-v1,full778,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,778,242,0.311054,31.1,27.95,34.44,3577628,4598.49,14783.59,legacy-v1,1
+research-v1,full778,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,778,101,0.129820,13.0,10.80,15.53,1014890,1304.49,10048.42,legacy-v1,1
+research-v1,full778,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,778,210,0.269923,27.0,23.99,30.22,1573429,2022.40,7492.52,legacy-v1,1
+research-v1,full778,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,778,153,0.196658,19.7,17.02,22.60,1226782,1576.84,8018.18,legacy-v1,1
+research-v1,full778,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,778,194,0.249357,24.9,22.02,28.09,1381093,1775.18,7119.04,legacy-v1,1
+research-v1,full778,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,778,145,0.186375,18.6,16.06,21.53,946147,1216.13,6525.15,legacy-v1,1
+research-v1,full778,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,778,301,0.386889,38.7,35.33,42.16,1518681,1952.03,5045.45,legacy-v1,1
+research-v1,full778,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,778,223,0.286632,28.7,25.60,31.94,1161213,1492.56,5207.23,legacy-v1,1
+research-v1,full778,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,778,265,0.340617,34.1,30.82,37.46,1329974,1709.48,5018.77,legacy-v1,1
+research-v1,full778,minimax_m3,MiniMax M3,no_context,778,119,0.152956,15.3,12.94,17.99,10074897,12949.74,84663.00,legacy-v1,1
+research-v1,full778,minimax_m3,MiniMax M3,with_skill,778,253,0.325193,32.5,29.32,35.89,8992249,11558.16,35542.49,legacy-v1,1
+research-v1,full778,minimax_m3,MiniMax M3,with_gene_gemini,778,191,0.245501,24.6,21.66,27.69,9506722,12219.44,49773.41,legacy-v1,1
+research-v1,full778,minimax_m3,MiniMax M3,with_gene_opus,778,247,0.317481,31.8,28.57,35.10,9382835,12060.20,37987.19,legacy-v1,1
+research-v1,full778,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,778,93,0.119537,11.9,9.86,14.42,1239080,1592.65,13323.44,legacy-v1,1
+research-v1,full778,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,778,134,0.172237,17.2,14.73,20.04,1735672,2230.94,12952.78,legacy-v1,1
+research-v1,full778,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,778,118,0.151671,15.2,12.82,17.86,1650867,2121.94,13990.40,legacy-v1,1
+research-v1,full778,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,778,147,0.188946,18.9,16.30,21.80,1654972,2127.21,11258.31,legacy-v1,1
+research-v1,full778,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,778,102,0.131105,13.1,10.92,15.66,1738840,2235.01,17047.45,legacy-v1,1
+research-v1,full778,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,778,218,0.280206,28.0,24.98,31.28,2366731,3042.07,10856.56,legacy-v1,1
+research-v1,full778,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,778,172,0.221080,22.1,19.33,25.16,2402321,3087.82,13966.98,legacy-v1,1
+research-v1,full778,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,778,227,0.291774,29.2,26.09,32.47,2287725,2940.52,10078.08,legacy-v1,1
+research-v1,opus_evolved252,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,252,138,0.547619,54.8,48.59,60.79,651388,2584.87,4720.20,legacy-v1,1
+research-v1,opus_evolved252,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,252,161,0.638889,63.9,57.79,69.57,803099,3186.90,4988.19,legacy-v1,1
+research-v1,opus_evolved252,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,252,165,0.654762,65.5,59.41,71.07,648997,2575.38,3933.32,legacy-v1,1
+research-v1,opus_evolved252,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,252,200,0.793651,79.4,73.95,83.90,723480,2870.95,3617.40,legacy-v1,1
+research-v1,opus_evolved252,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,252,112,0.444444,44.4,38.44,50.62,601488,2386.86,5370.43,legacy-v1,1
+research-v1,opus_evolved252,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,252,140,0.555556,55.6,49.38,61.56,657319,2608.41,4695.14,legacy-v1,1
+research-v1,opus_evolved252,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,252,128,0.507937,50.8,44.66,56.91,598680,2375.71,4677.19,legacy-v1,1
+research-v1,opus_evolved252,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,252,167,0.662698,66.3,60.23,71.82,617926,2452.09,3700.16,legacy-v1,1
+research-v1,opus_evolved252,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,252,89,0.353175,35.3,29.68,41.40,260162,1032.39,2923.17,legacy-v1,1
+research-v1,opus_evolved252,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,252,114,0.452381,45.2,39.21,51.41,416334,1652.12,3652.05,legacy-v1,1
+research-v1,opus_evolved252,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,252,118,0.468254,46.8,40.76,52.99,323552,1283.94,2741.97,legacy-v1,1
+research-v1,opus_evolved252,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,252,136,0.539683,54.0,47.80,60.02,389509,1545.67,2864.04,legacy-v1,1
+research-v1,opus_evolved252,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,252,120,0.476190,47.6,41.53,53.77,244559,970.47,2037.99,legacy-v1,1
+research-v1,opus_evolved252,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,252,159,0.630952,63.1,56.98,68.81,408255,1620.06,2567.64,legacy-v1,1
+research-v1,opus_evolved252,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,252,154,0.611111,61.1,54.97,66.92,304467,1208.20,1977.06,legacy-v1,1
+research-v1,opus_evolved252,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,252,182,0.722222,72.2,66.39,77.39,375067,1488.36,2060.81,legacy-v1,1
+research-v1,opus_evolved252,minimax_m3,MiniMax M3,no_context,252,97,0.384921,38.5,32.70,44.63,2129348,8449.79,21952.04,legacy-v1,1
+research-v1,opus_evolved252,minimax_m3,MiniMax M3,with_skill,252,127,0.503968,50.4,44.26,56.52,1711938,6793.40,13479.83,legacy-v1,1
+research-v1,opus_evolved252,minimax_m3,MiniMax M3,with_gene_gemini,252,128,0.507937,50.8,44.66,56.91,1786074,7087.60,13953.70,legacy-v1,1
+research-v1,opus_evolved252,minimax_m3,MiniMax M3,with_gene_opus,252,160,0.634921,63.5,57.39,69.19,1788881,7098.73,11180.51,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,252,80,0.317460,31.8,26.31,37.73,277332,1100.52,3466.65,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,252,80,0.317460,31.8,26.31,37.73,421038,1670.79,5262.98,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,252,93,0.369048,36.9,31.19,43.02,403472,1601.08,4338.41,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,252,109,0.432540,43.2,37.28,49.43,434482,1724.13,3986.07,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,252,88,0.349206,34.9,29.30,40.99,400726,1590.18,4553.70,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,252,122,0.484127,48.4,42.31,54.56,543147,2155.35,4452.02,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,252,127,0.503968,50.4,44.26,56.52,496702,1971.04,3911.04,legacy-v1,1
+research-v1,opus_evolved252,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,252,156,0.619048,61.9,55.77,67.68,573182,2274.53,3674.24,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,526,19,0.036122,3.6,2.32,5.57,2543463,4835.48,133866.47,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,526,149,0.283270,28.3,24.64,32.32,2844031,5406.90,19087.46,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,526,81,0.153992,15.4,12.57,18.73,2557980,4863.08,31580.00,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,526,105,0.199620,20.0,16.77,23.59,2631118,5002.13,25058.27,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,526,17,0.032319,3.2,2.03,5.11,3198237,6080.30,188131.59,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,526,117,0.222433,22.2,18.90,25.99,3222998,6127.37,27546.99,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,526,49,0.093156,9.3,7.12,12.10,2944437,5597.79,60090.55,legacy-v1,1
+research-v1,opus_reference_distilled526,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,526,75,0.142586,14.3,11.53,17.51,2959702,5626.81,39462.69,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,526,12,0.022814,2.3,1.31,3.94,754728,1434.84,62894.00,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,526,96,0.182510,18.2,15.18,21.78,1157095,2199.80,12053.07,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,526,35,0.066540,6.7,4.82,9.11,903230,1717.17,25806.57,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,526,58,0.110266,11.0,8.63,13.99,991584,1885.14,17096.28,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,526,25,0.047529,4.8,3.24,6.92,701588,1333.82,28063.52,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,526,142,0.269962,27.0,23.38,30.95,1110426,2111.08,7819.90,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,526,69,0.131179,13.1,10.50,16.27,856746,1628.79,12416.61,legacy-v1,1
+research-v1,opus_reference_distilled526,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,526,83,0.157795,15.8,12.91,19.14,954907,1815.41,11504.90,legacy-v1,1
+research-v1,opus_reference_distilled526,minimax_m3,MiniMax M3,no_context,526,22,0.041825,4.2,2.78,6.25,7945549,15105.61,361161.32,legacy-v1,1
+research-v1,opus_reference_distilled526,minimax_m3,MiniMax M3,with_skill,526,126,0.239544,23.9,20.50,27.78,7280311,13840.90,57780.25,legacy-v1,1
+research-v1,opus_reference_distilled526,minimax_m3,MiniMax M3,with_gene_gemini,526,63,0.119772,12.0,9.47,15.03,7720648,14678.04,122549.97,legacy-v1,1
+research-v1,opus_reference_distilled526,minimax_m3,MiniMax M3,with_gene_opus,526,87,0.165399,16.5,13.61,19.96,7593954,14437.17,87286.83,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,526,13,0.024715,2.5,1.45,4.18,961748,1828.42,73980.62,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,526,54,0.102662,10.3,7.95,13.15,1314634,2499.30,24345.07,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,526,25,0.047529,4.8,3.24,6.92,1247395,2371.47,49895.80,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,526,38,0.072243,7.2,5.31,9.76,1220490,2320.32,32118.16,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,526,14,0.026616,2.7,1.59,4.42,1338114,2543.94,95579.57,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,526,96,0.182510,18.2,15.18,21.78,1823584,3466.89,18995.67,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,526,45,0.085551,8.6,6.46,11.26,1905619,3622.85,42347.09,legacy-v1,1
+research-v1,opus_reference_distilled526,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,526,71,0.134981,13.5,10.84,16.68,1714543,3259.59,24148.49,legacy-v1,1
+research-v1,common_evolved180,bedrock_opus48,Anthropic Claude Opus 4.8,no_context,180,111,0.616667,61.7,54.39,68.46,378803,2104.46,3412.64,legacy-v1,1
+research-v1,common_evolved180,bedrock_opus48,Anthropic Claude Opus 4.8,with_skill,180,124,0.688889,68.9,61.79,75.20,489005,2716.69,3943.59,legacy-v1,1
+research-v1,common_evolved180,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_gemini,180,136,0.755556,75.6,68.79,81.26,369200,2051.11,2714.71,legacy-v1,1
+research-v1,common_evolved180,bedrock_opus48,Anthropic Claude Opus 4.8,with_gene_opus,180,155,0.861111,86.1,80.30,90.41,433758,2409.77,2798.44,legacy-v1,1
+research-v1,common_evolved180,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,no_context,180,96,0.533333,53.3,46.05,60.48,319475,1774.86,3327.86,legacy-v1,1
+research-v1,common_evolved180,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_skill,180,110,0.611111,61.1,53.83,67.93,390585,2169.92,3550.77,legacy-v1,1
+research-v1,common_evolved180,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_gemini,180,113,0.627778,62.8,55.52,69.50,316326,1757.37,2799.35,legacy-v1,1
+research-v1,common_evolved180,bedrock_sonnet46,Anthropic Claude Sonnet 4.6,with_gene_opus,180,134,0.744444,74.4,67.61,80.26,352423,1957.91,2630.02,legacy-v1,1
+research-v1,common_evolved180,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,no_context,180,82,0.455556,45.6,38.45,52.85,167863,932.57,2047.11,legacy-v1,1
+research-v1,common_evolved180,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_skill,180,91,0.505556,50.6,43.32,57.77,271142,1506.34,2979.58,legacy-v1,1
+research-v1,common_evolved180,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_gemini,180,105,0.583333,58.3,51.03,65.29,210492,1169.40,2004.69,legacy-v1,1
+research-v1,common_evolved180,gemini_flash,Google Gemini 3.1 Flash-Lite Preview,with_gene_opus,180,113,0.627778,62.8,55.52,69.50,255894,1421.63,2264.55,legacy-v1,1
+research-v1,common_evolved180,gemini_pro,Google Gemini 3.1 Pro Preview,no_context,180,114,0.633333,63.3,56.08,70.03,155928,866.27,1367.79,legacy-v1,1
+research-v1,common_evolved180,gemini_pro,Google Gemini 3.1 Pro Preview,with_skill,180,128,0.711111,71.1,64.10,77.24,267671,1487.06,2091.18,legacy-v1,1
+research-v1,common_evolved180,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_gemini,180,130,0.722222,72.2,65.27,78.25,196543,1091.91,1511.87,legacy-v1,1
+research-v1,common_evolved180,gemini_pro,Google Gemini 3.1 Pro Preview,with_gene_opus,180,149,0.827778,82.8,76.59,87.59,244472,1358.18,1640.75,legacy-v1,1
+research-v1,common_evolved180,minimax_m3,MiniMax M3,no_context,180,84,0.466667,46.7,39.52,53.95,1273989,7077.72,15166.54,legacy-v1,1
+research-v1,common_evolved180,minimax_m3,MiniMax M3,with_skill,180,104,0.577778,57.8,50.47,64.76,1060519,5891.77,10197.30,legacy-v1,1
+research-v1,common_evolved180,minimax_m3,MiniMax M3,with_gene_gemini,180,110,0.611111,61.1,53.83,67.93,1020646,5670.26,9278.60,legacy-v1,1
+research-v1,common_evolved180,minimax_m3,MiniMax M3,with_gene_opus,180,126,0.700000,70.0,62.94,76.22,1058815,5882.31,8403.29,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,no_context,180,76,0.422222,42.2,35.24,49.53,177756,987.53,2338.89,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_skill,180,67,0.372222,37.2,30.50,44.48,265080,1472.67,3956.42,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_gemini,180,87,0.483333,48.3,41.14,55.59,252072,1400.40,2897.38,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_coder30b,Qwen/Qwen3-Coder-30B-A3B-Instruct,with_gene_opus,180,97,0.538889,53.9,46.60,61.01,292691,1626.06,3017.43,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,no_context,180,75,0.416667,41.7,34.71,48.97,249234,1384.63,3323.12,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_skill,180,98,0.544444,54.4,47.15,61.55,333929,1855.16,3407.44,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_gemini,180,107,0.594444,59.4,52.15,66.35,287171,1595.39,2683.84,legacy-v1,1
+research-v1,common_evolved180,sf_qwen_moe,Qwen/Qwen3.5-397B-A17B,with_gene_opus,180,127,0.705556,70.6,63.52,76.73,334838,1860.21,2636.52,legacy-v1,1
