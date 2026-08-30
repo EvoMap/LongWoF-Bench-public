@@ -125,6 +125,43 @@ published condition.
   scoring for published-result comparison.
 - `hardened-v2` results must be labeled and analyzed separately.
 
+## Unreleased
+
+### Fixed
+
+- The Quick start pointed the runner at a `tasks_final/` directory the public
+  archive never contains. The archive ships a distribution layout
+  (`data/tasks`, `data/contexts`, `data/runtime`, `data/environments`) while
+  `eval.run_official` consumes the authoring layout, where a task's assets sit
+  together under `scenarios/<task_id>/`, so the first runner command in the
+  published instructions failed for every reader with
+  `FileNotFoundError: .../tasks_final/manifest.json`. Following the corrected
+  instructions now reaches the provider call.
+
+### Added
+
+- `tools/materialize_public_pool.py` rebuilds the authoring pool layout from an
+  extracted public archive. `data/release.json` records both the distribution
+  path and the authoring path of every asset, so the layout is reconstructed
+  from the manifest rather than guessed at, and each of the 4,412 files is
+  re-checked against its recorded SHA-256 while copying.
+- Both public-data tools are now listed in the repository map. Previously
+  `tools/public_data_smoke.py` existed but was documented nowhere, which is why
+  the broken quickstart had no visible alternative.
+
+### Known
+
+`eval/run_official.py` still describes its input as
+`gene_bench_v3/tasks_final/manifest.json`, naming a private authoring checkout
+in public help output. It is left alone deliberately: the file is covered by
+`protected_logic_files_at_freeze` in `results/research_v1.json`, which pins the
+scoring logic that produced the published numbers. Even a comment-only edit
+breaks that check, so the wording waits for the next results refresh.
+
+`tools/public_data_smoke.py` exercises only the dry-run path, and a dry run
+never resolves task files. It reports a healthy archive whether or not the
+layout the runner needs is present, so it cannot stand in for a real run.
+
 ## 1.0.2 - 2026-08-30
 
 A data-rights release. The code is unchanged; the archive is re-cut because four

@@ -185,7 +185,7 @@ Sigstore 元数据见
 ## 快速开始
 
 代码仓库本身有意不包含完整任务池。请从 `v1.0.2` GitHub Release 下载公开数据包，
-校验后解压到一个提供标准 `tasks_final/` 布局的目录：
+校验并解压，然后从中重建创作布局：
 
 ```bash
 BASE=https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.2
@@ -209,24 +209,37 @@ cosign verify-blob --bundle "$ARCHIVE.sigstore.json" \
   "$ARCHIVE"
 ```
 
-随后把评测入口指向解压出的目录：
+数据包解压后是分发布局 —— `data/tasks`、`data/contexts`、`data/runtime`、
+`data/environments`；而评测入口消费的是创作布局，即每个任务的全部资产集中在
+`scenarios/<task_id>/` 下。首次运行前先重建这个布局。这一步不做任何推测：
+`data/release.json` 为每个资产同时记录了两种路径，复制时逐个文件重新校验其
+SHA-256。
 
 ```bash
 git clone https://github.com/EvoMap/LongWoF-Bench-public.git
 cd LongWoF-Bench-public
+pip install -r requirements.txt
 
+python tools/materialize_public_pool.py \
+  --bundle-root /path/to/taskgenome-bench-public-data-v1.0.2 \
+  --out tasks_final
+```
+
+它会写出 `tasks_final/manifest.json`、`tasks_final/scenarios/<task_id>/` 以及两套
+Gene 集合，并报告 `"task_count": 778`、`"assets_copied": 4412`。随后把评测入口指向它：
+
+```bash
 # 先确认公开评测入口存在并查看参数。
 python -m eval.run_official --help
 
-# 将公开数据包解压到 /path/to/longwof-public 后：
 python -m eval.run_official \
-  --manifest /path/to/longwof-public/tasks_final/manifest.json \
-  --pool-root /path/to/longwof-public/tasks_final \
+  --manifest tasks_final/manifest.json \
+  --pool-root tasks_final \
   --protocol legacy-v1 \
   --ids T0499 \
   --models gemini_flash \
   --conditions no_context,with_skill,with_gene_opus \
-  --gene-opus-dir /path/to/longwof-public/tasks_final/genes_opus48 \
+  --gene-opus-dir tasks_final/genes_opus48 \
   --dry-run \
   --run-id readme-quickstart
 ```
@@ -254,6 +267,8 @@ python -B tools/research_results.py render
 | 路径 | 内容 |
 |---|---|
 | [`eval/run_official.py`](eval/run_official.py) | 官方评测入口 |
+| [`tools/materialize_public_pool.py`](tools/materialize_public_pool.py) | 从公开数据包重建创作布局 |
+| [`tools/public_data_smoke.py`](tools/public_data_smoke.py) | 对解压后的数据包做免凭证 dry-run 自检 |
 | [`eval/evolve_genes_v3.py`](eval/evolve_genes_v3.py) | GDIv2 Gene 进化器：rollout、验证反馈、蒸馏 |
 | [`eval/generate_agent_skills_v3.py`](eval/generate_agent_skills_v3.py) | Skill 基线的 Agent Skill 生成器 |
 | [`eval/rewrite_skills_v3.py`](eval/rewrite_skills_v3.py) | 带泄漏审计的 Skill 改写器 |
@@ -268,8 +283,8 @@ python -B tools/research_results.py render
 | [`LICENSE`](LICENSE) | 公开代码的 Apache License 2.0 |
 | [`DATA_LICENSE.md`](DATA_LICENSE.md) | 独立公开数据包的 CC BY 4.0 条款 |
 
-公开数据包解压后，其中的 `tasks_final/` 目录会提供评测所需的任务规范和最终测试版
-指导资产；私有评测包不属于公开发布范围。
+公开数据包解压并重建后，得到的 `tasks_final/` 目录会提供评测所需的任务规范和最终
+测试版指导资产；私有评测包不属于公开发布范围。
 
 ## 引用
 

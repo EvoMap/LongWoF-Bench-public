@@ -216,7 +216,7 @@ rights holders knows where they belong. See
 
 The code repository alone is intentionally not a complete task pool. Download
 the public data archive from the `v1.0.2` GitHub Release, verify it, and unpack
-it into a directory that provides the canonical `tasks_final/` layout:
+it, then rebuild the authoring pool layout from it:
 
 ```bash
 BASE=https://github.com/EvoMap/LongWoF-Bench-public/releases/download/v1.0.2
@@ -241,27 +241,46 @@ cosign verify-blob --bundle "$ARCHIVE.sigstore.json" \
   "$ARCHIVE"
 ```
 
-Then point the runner at the unpacked directory:
+The archive unpacks to a distribution layout — `data/tasks`, `data/contexts`,
+`data/runtime`, `data/environments` — while the runner consumes the authoring
+layout, where every asset of a task sits together under `scenarios/<task_id>/`.
+Rebuild that layout before the first run. Nothing is inferred: `data/release.json`
+records both paths for every asset, and each file is re-checked against its
+recorded SHA-256 as it is copied.
 
 ```bash
 git clone https://github.com/EvoMap/LongWoF-Bench-public.git
 cd LongWoF-Bench-public
+pip install -r requirements.txt
 
-# First, verify that the public runner is present and inspect its options.
+python tools/materialize_public_pool.py \
+  --bundle-root /path/to/taskgenome-bench-public-data-v1.0.2 \
+  --out tasks_final
+```
+
+That writes `tasks_final/manifest.json`, `tasks_final/scenarios/<task_id>/`,
+and the two Gene collections, and reports `"task_count": 778` with
+`"assets_copied": 4412`. Then point the runner at it:
+
+```bash
+# Confirm the public runner is present and inspect its options.
 python -m eval.run_official --help
 
-# After unpacking the public data archive into /path/to/longwof-public:
 python -m eval.run_official \
-  --manifest /path/to/longwof-public/tasks_final/manifest.json \
-  --pool-root /path/to/longwof-public/tasks_final \
+  --manifest tasks_final/manifest.json \
+  --pool-root tasks_final \
   --protocol legacy-v1 \
   --ids T0499 \
   --models gemini_flash \
   --conditions no_context,with_skill,with_gene_opus \
-  --gene-opus-dir /path/to/longwof-public/tasks_final/genes_opus48 \
+  --gene-opus-dir tasks_final/genes_opus48 \
   --dry-run \
   --run-id readme-quickstart
 ```
+
+To check an extracted archive without rebuilding anything, `python
+tools/public_data_smoke.py --bundle-root <archive>` runs the same
+credential-free dry-run against a temporary manifest.
 
 The dry-run makes no provider call and executes no candidate code. It should
 report 778 loaded tasks and three pending trials for `T0499`. Removing
@@ -291,6 +310,8 @@ judges. The frozen protocol and subset rules are documented in
 | Path | Contents |
 |---|---|
 | [`eval/run_official.py`](eval/run_official.py) | Official evaluation runner |
+| [`tools/materialize_public_pool.py`](tools/materialize_public_pool.py) | Rebuild the authoring pool layout from a public data archive |
+| [`tools/public_data_smoke.py`](tools/public_data_smoke.py) | Credential-free dry-run check of an extracted archive |
 | [`eval/evolve_genes_v3.py`](eval/evolve_genes_v3.py) | GDIv2 Gene evolver: rollout, verifier feedback, distillation |
 | [`eval/generate_agent_skills_v3.py`](eval/generate_agent_skills_v3.py) | Agent Skill author for the Skill baseline |
 | [`eval/rewrite_skills_v3.py`](eval/rewrite_skills_v3.py) | Leakage-audited Skill rewriter |
@@ -305,7 +326,8 @@ judges. The frozen protocol and subset rules are documented in
 | [`LICENSE`](LICENSE) | Apache License 2.0 for public code |
 | [`DATA_LICENSE.md`](DATA_LICENSE.md) | CC BY 4.0 terms for the separate public data archive |
 
-After the public data archive is unpacked, its `tasks_final/` directory supplies
+After the public data archive is unpacked and materialized, the resulting
+`tasks_final/` directory supplies
 the task specifications and final tested guidance used by the runner. The
 private evaluation bundle is never part of the public release.
 

@@ -1,5 +1,5 @@
 {
-  "file_count": 145,
+  "file_count": 146,
   "files": [
     {
       "mode": "0644",
@@ -25,8 +25,8 @@
     {
       "mode": "0644",
       "path": "CHANGELOG.md",
-      "sha256": "76c67ef2048448e3907a0a59b78786d2ef4d3562dabd768bcb81f690de4b7462",
-      "size": 12324,
+      "sha256": "982899832e35cd174b65bb987af7c6c4f251bb8a0506eb60b3d7934c5d2c4f7d",
+      "size": 14162,
       "source_relpath": "CHANGELOG.md"
     },
     {
@@ -60,15 +60,15 @@
     {
       "mode": "0644",
       "path": "README.md",
-      "sha256": "340d569e7fbb7625a3a5df114219b085936a663a1f69812579773eb8355f615e",
-      "size": 16466,
+      "sha256": "2e774cf933d5873b10f3d78a11e2ef98937c8b9d83838f041da4bfc840a0059d",
+      "size": 17517,
       "source_relpath": "release/public_code/README.md"
     },
     {
       "mode": "0644",
       "path": "README.zh-CN.md",
-      "sha256": "069ec25ff0f62716bfc49f59a08774ef5992aa5c6143ddf296ad8a918680c9ec",
-      "size": 15209,
+      "sha256": "fbd7982e242c3ed37d244c14f6a1bc58482ee66c1488b435384a79d99b40de27",
+      "size": 16024,
       "source_relpath": "release/public_code/README.zh-CN.md"
     },
     {
@@ -980,6 +980,13 @@
       "sha256": "731fee0f4a13ff219463e0d91e02acc35a53653c57d6e15a50be8df34331ec88",
       "size": 5704,
       "source_relpath": "tools/check_restricted_skills.py"
+    },
+    {
+      "mode": "0644",
+      "path": "tools/materialize_public_pool.py",
+      "sha256": "682b8eb51133d72f5d067a6a7700e0f9aa3c419d566e36265e88b648de80c4ae",
+      "size": 5818,
+      "source_relpath": "tools/materialize_public_pool.py"
     },
     {
       "mode": "0644",
